@@ -79,17 +79,41 @@ body {
 }
 
 a {
-	width: fit-content;
-	height: fit-content;
-	font-size: 20px;
-	color: black;
-	text-decoration: none;
-}
+	&.menu-link {
+		width: fit-content;
+		height: fit-content;
+		font-size: 20px;
+		color: black;
+		text-decoration: none;
 
-a:hover {
-	background: black;
-	color: white;
-	transition: all 0.2s;
+		&:hover {
+			background: black;
+			color: white;
+			transition: all 0.2s;
+		}
+	}
+
+	&.button {
+		display: inline-block;
+		height: 85px;
+		padding: 25px 45px;
+		text-decoration: none;
+
+		&:hover {
+			opacity: 0.7;
+			transition: all 0.1s;
+		}
+
+		&.primary-button {
+			background-color: black;
+			color: white;
+		}
+
+		&.secondary-button {
+			color: black;
+			border: 2px solid black;
+		}
+	}
 }
 
 .extra-bold {
@@ -116,7 +140,7 @@ a:hover {
 	font-size: 38px;
 	font-weight: 500;
 	line-height: 125%;
-	letter-spacing: -3%;
+	letter-spacing: -0.7px;
 	margin: 0;
 }
 
@@ -149,6 +173,12 @@ h1 {
 	font-size: 150px;
 	margin-top: 0;
 	margin-bottom: 90px;
+}
+
+h2 {
+	font-size: 100px;
+	line-height: 100%;
+	letter-spacing: -3%;
 }
 
 h3 {
@@ -191,13 +221,27 @@ h3 {
 	color: black;
 	padding-top: 52px;
 
-	.hero__keywords {
+	.keywords {
 		margin-top: 190px;
+		margin-bottom: 65px;
 
 		p {
 			font-size: 20px;
 			line-height: 120%;
 			letter-spacing: 10%;
+		}
+	}
+
+	.boutique_advisory {
+		position: absolute;
+		transform: rotate(-90deg) translate(380px, 450px);
+		right: 0;
+		display: flex;
+		align-items: center;
+
+		p {
+			margin: 0;
+			padding-left: 420px;
 		}
 	}
 }
@@ -206,17 +250,17 @@ h3 {
 
 .about {
 	background: #ffa14b;
-	padding: 0 0 140px;
+	padding: 0 0 70px;
 	overflow: hidden;
+	color: black;
 
 	& .container {
 		margin-top: 60px;
 
-		div {
+		.eyebrow_column {
 			background-color: white;
-			color: black;
-			position: absolute;
 			z-index: 1;
+			position: absolute;
 			width: 960px;
 			height: 1250px;
 			margin-left: -80px;
@@ -225,6 +269,30 @@ h3 {
 				transform: rotate(-90deg) translate(-80px, -40%);
 				margin: 0;
 				display: inline-block;
+			}
+		}
+	}
+
+	.content {
+		padding-top: 230px;
+		padding-left: 100px;
+		position: relative;
+		z-index: 1;
+
+		h2 {
+			margin-top: 0;
+			margin-bottom: 55px;
+		}
+
+		.content__information {
+			width: 600px;
+
+			p {
+				margin-bottom: 150px;
+			}
+
+			.primary-button {
+				margin-right: 25px;
 			}
 		}
 	}
