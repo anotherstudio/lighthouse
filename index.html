@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<meta
+			name="description"
+			content="A full-stack digital development studio, crafting beautiful and modern solutions in a dynamic digital landscape with lots of moving parts, where a tiny detail can have a huge impact, shaping the success and performance of your business."
+		/>
+		<meta property="og:site_name" content="Lighthouse" />
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content="https://weareanother.studio" />
+		<meta
+			property="og:image"
+			content="https://weareanother.studio/og.png"
+		/>
+		<meta property="og:image:width" content="2400" />
+		<meta property="og:image:height" content="1260" />
+		<meta
+			property="og:title"
+			content="Lighthouse • A full-stack digital development studio"
+		/>
+		<meta
+			property="og:description"
+			content="A one-stop shop on your road to success. We craft all things digital, delivering everything you need to make your brand shine and your wallet pop."
+		/>
+
+		<title>Lighthouse</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap"
+			rel="stylesheet"
+		/>
+		<link
+			rel="apple-touch-icon"
+			sizes="180x180"
+			href="apple-touch-icon.png"
+		/>
+		<link
+			id="favicon"
+			rel="icon"
+			type="image/png"
+			sizes="32x32"
+			href="favicon-32x32--dark.png"
+		/>
+
+		<link rel="manifest" href="site.webmanifest" />
+		<link rel="stylesheet" type="text/css" href="styles.css" />
+		<style></style>
+	</head>
+	<body>
+		<!-- Lines -->
+		<section class="line-block padding-x">
+			<div class="inner-block mw-container mx-auto relative w-100 h-100">
+				<div class="line line-1"></div>
+				<div class="line line-2"></div>
+				<div class="line line-3"></div>
+				<div class="line line-4"></div>
+			</div>
+		</section>
+
+		<!-- Hero -->
+		<section class="hero">
+			<div class="inner-block mw-container mx-auto">
+				<nav class="main-nav col-3">
+					<div class="inner-block mw-container mx-auto">
+						<img
+							src="assets/logos/logo_black.svg"
+							alt="Lighthouse logo"
+							width="45"
+							height="45"
+							class="col-1"
+						/>
+						<a href="/services" class="col-1 uppercase extra-bold"
+							>Services</a
+						>
+						<a href="/services" class="col-1 uppercase extra-bold"
+							>About</a
+						>
+					</div>
+				</nav>
+				<h1 class="hero__title text-hero col-3">
+					NURTURING IDEAS FROM SEED TO SUCCESS
+				</h1>
+				<p class="col-1 text-default">
+					Lighthouse is a strategic brand transformation agency.
+				</p>
+				<p class="col-1 text-default">
+					By uniting vision, culture, and network, we help brands
+					navigate their future in an ultra-competitive luxury market.
+				</p>
+			</div>
+			<div class="inner-block mw-container mx-auto hero__keywords">
+				<p class="col-1">VISION</p>
+				<p class="col-1">NAVIGATION</p>
+				<p class="col-1">TRANSFORMATION</p>
+			</div>
+		</section>
+
+		<!-- About -->
+		<section class="about">
+			<div class="inner-block mw-container mx-auto">
+				<div class="container col-1">
+					<div>
+						<p class="eyebrow uppercase">About Us</p>
+					</div>
+				</div>
+				<img
+					class="background-1 col-1"
+					src="assets/about/about_background_01.jpg"
+					alt="Bathroom decoration"
+				/>
+				<img
+					class="background-2 col-1"
+					src="assets/about/about_background_02.jpg"
+					alt="Living room decoration"
+				/>
+			</div>
+		</section>
+
+		<script src="https://cdn.jsdelivr.net/gh/Joe12387/detectIncognito@main/dist/es5/detectIncognito.min.js"></script>
+		<script>
+			// Check if the user has a dark theme enabled or is in incognito mode
+			detectIncognito().then((result) => {
+				if (result.isPrivate === true) {
+					// Light mode
+					document.getElementById("favicon").href =
+						"favicon-32x32--light.png";
+				}
+			});
+
+			if (
+				window.matchMedia &&
+				window.matchMedia("(prefers-color-scheme: dark)").matches
+			) {
+				// Light mode
+				document.getElementById("favicon").href =
+					"favicon-32x32--light.png";
+			} else {
+				// Dark mode
+				document.getElementById("favicon").href =
+					"favicon-32x32--dark.png";
+			}
+		</script>
+	</body>
+</html>
