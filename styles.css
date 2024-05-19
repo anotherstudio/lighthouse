@@ -22,7 +22,6 @@ html {
 body {
 	padding: 0;
 	margin: 0;
-	background-color: #191919;
 	color: white;
 	display: flex;
 	flex-direction: column;
@@ -247,7 +246,7 @@ h3 {
 
 	.boutique_advisory {
 		position: absolute;
-		transform: rotate(-90deg) translate(380px, 450px);
+		transform: rotate(-90deg) translate(380px, 464px);
 		right: 0;
 		display: flex;
 		align-items: center;
@@ -279,7 +278,7 @@ h3 {
 			margin-left: -80px;
 
 			p {
-				transform: rotate(-90deg) translate(-80px, -40%);
+				transform: rotate(-90deg) translate(-80px, -80%);
 				margin: 0;
 				display: inline-block;
 			}
@@ -426,6 +425,27 @@ h3 {
 					}
 				}
 			}
+		}
+	}
+}
+
+/* Gallery */
+
+.gallery {
+	background-color: white;
+	margin-bottom: 220px;
+
+	.gallery-container {
+		.first-image {
+			margin-left: -80px;
+		}
+
+		.second-image {
+			margin-left: -7px;
+		}
+
+		.third-image {
+			margin-left: -11px;
 		}
 	}
 }
