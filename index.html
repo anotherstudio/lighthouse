@@ -365,7 +365,103 @@
 			/>
 		</section>
 
+		<!-- Footer -->
+		<footer>
+			<div class="inner-block mw-container mx-auto">
+				<div class="col-1 logo-column">
+					<img
+						src="assets/logos/lighthouse_isologo.svg"
+						alt="Lighthouse logo"
+						width="320"
+						height="56"
+					/>
+				</div>
+				<div class="col-1 links-column">
+					<a href="/about" class="link-title">About</a>
+					<a href="/services" class="link-title">Services</a>
+					<a href="/services#assesment" class="link-subtitle"
+						>Assesment</a
+					>
+					<a href="/services#quickfix" class="link-subtitle"
+						>Quick fix</a
+					>
+					<a href="/services#roadmap" class="link-subtitle"
+						>Roadmap</a
+					>
+					<a href="/services#luxeexpress" class="link-subtitle"
+						>Luxe Express</a
+					>
+					<a href="/services#marketingstrategy" class="link-subtitle"
+						>Marketing Strategy</a
+					>
+					<a href="/services#events" class="link-subtitle">Events</a>
+					<a href="/services#partnerships" class="link-subtitle"
+						>Partnerships</a
+					>
+					<a href="/services#retailstrategy" class="link-subtitle"
+						>Retail Strategy</a
+					>
+					<a href="/services#story" class="link-subtitle">Story</a>
+					<small>
+						<span
+							>Copyright © <span id="year">2024</span> Lighthouse.
+							All rights reserved.</span
+						>
+						<br />
+						All materials on this site, including but not limited to
+						text, images, graphics, logos, icons, audio clips,
+						digital downloads, data compilations, and software, are
+						the property of Lighthouse or its content suppliers and
+						are protected by international copyright laws.
+					</small>
+				</div>
+				<div class="col-1 connect-column">
+					<div>
+						<h3 class="text-default">
+							Every project is tailored to your specific needs
+						</h3>
+						<a class="body-large button secondary-button" href=""
+							>Connect with us</a
+						>
+						<a href="" class="connect-icon mail-icon">
+							<img
+								src="assets/icons/mail.png"
+								alt="Mail icon"
+								width="24"
+								height="24"
+							/>
+						</a>
+						<a href="" class="connect-icon facebook-icon">
+							<img
+								src="assets/icons/facebook.png"
+								alt="Facebook icon"
+								width="20"
+								height="20"
+							/>
+						</a>
+						<a href="" class="connect-icon linkedin-icon">
+							<img
+								src="assets/icons/linkedin.png"
+								alt="LinkedIn icon"
+								width="20"
+								height="20"
+							/>
+						</a>
+					</div>
+					<small
+						>Website by
+						<a href="https://weareanother.studio">ANOTHER</a> |
+						<a href="https://thumbstack.in">THUMBSTACK</a></small
+					>
+				</div>
+			</div>
+		</footer>
+
 		<script src="https://cdn.jsdelivr.net/gh/Joe12387/detectIncognito@main/dist/es5/detectIncognito.min.js"></script>
+		<script>
+			document.getElementById("year").innerHTML =
+				new Date().getFullYear();
+		</script>
 		<script>
 			// Check if the user has a dark theme enabled or is in incognito mode
 			detectIncognito().then((result) => {
