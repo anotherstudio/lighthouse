@@ -659,115 +659,161 @@ footer {
 /* Services page */
 .services-container {
 	z-index: 50;
-
 	background: linear-gradient(
 		to right,
 		var(--assessment) 50%,
 		var(--story) 50%
 	);
+}
 
+.accordion {
+	display: flex;
+	justify-content: center;
+	height: 1080px;
+}
+
+.accordion-cell {
+	display: inline-block;
+	position: relative;
+	height: 1080px;
+	width: 100px;
+	transition-property: width;
+	transition-duration: 250ms;
+	transition-timing-function: cubic-bezier(1, 0, 0, 1);
+	cursor: pointer;
+	overflow: hidden;
+
+	&:nth-child(1) {
+		background: var(--assessment);
+	}
+
+	&:nth-child(2) {
+		background: var(--quick-fix);
+	}
+
+	&:nth-child(3) {
+		background: var(--roadmap);
+	}
+
+	&:nth-child(4) {
+		background: var(--luxe-express);
+	}
+
+	&:nth-child(5) {
+		background: var(--marketing-strategy);
+	}
+
+	&:nth-child(6) {
+		background: var(--events);
+	}
+
+	&:nth-child(7) {
+		background: var(--partnerships);
+	}
+
+	&:nth-child(8) {
+		background: var(--retail-strategy);
+	}
+
+	&:nth-child(9) {
+		background: var(--story);
+	}
+
+	& > h4 {
+		display: block;
+		position: absolute;
+		margin: 0;
+		padding: 0;
+		left: 1rem;
+		bottom: 3rem;
+		font-size: 45px;
+		color: black;
+		transform: rotate(180deg);
+		transition-property: left right transform;
+		transition-duration: 250ms;
+		writing-mode: vertical-rl;
+	}
+
+	& > .accordion-cell-content {
+		display: block;
+		width: 540px;
+		max-height: 1080px;
+		opacity: 0;
+		transition-property: opacity;
+		transition-duration: 250ms;
+		overflow: hidden;
+		font-size: 20px;
+		letter-spacing: -0.48px;
+		font-weight: 600;
+		color: black;
+		top: 90px;
+		position: relative;
+		left: 170px;
+		line-height: 1.7;
+
+		& a {
+			color: black;
+		}
+	}
+}
+
+.expanded {
+	width: 984px;
+
+	& > .accordion-cell-content {
+		opacity: 1;
+		transition-property: opacity;
+		transition-duration: 250ms;
+	}
+}
+
+.collapsed {
+	width: 100px;
+}
+
+/* Responsive styling */
+@media (max-width: 1400px) {
 	.accordion {
-		display: flex;
-		justify-content: center;
-		height: 1080px;
+		flex-direction: column;
+		height: auto;
 	}
 
 	.accordion-cell {
-		display: inline-block;
-		position: relative;
-		height: 1080px;
-		width: 100px;
-		transition-property: width;
-		transition-duration: 250ms;
-		transition-timing-function: cubic-bezier(1, 0, 0, 1);
-		cursor: pointer;
-		overflow: hidden;
+		width: 100%;
+		height: auto;
+		transition-property: height;
+		padding: 10px; /* Add padding for better spacing */
+	}
 
-		&:nth-child(1) {
-			background: var(--assessment);
-		}
+	.accordion-cell h4 {
+		writing-mode: horizontal-tb;
+		transform: rotate(0deg);
+		left: 1rem;
+		top: 1rem;
+		bottom: auto;
+		font-size: 24px; /* Smaller font size for mobile */
+		transform: none; /* Keep title at the top */
+	}
 
-		&:nth-child(2) {
-			background: var(--quick-fix);
-		}
-
-		&:nth-child(3) {
-			background: var(--roadmap);
-		}
-
-		&:nth-child(4) {
-			background: var(--luxe-express);
-		}
-
-		&:nth-child(5) {
-			background: var(--marketing-strategy);
-		}
-
-		&:nth-child(6) {
-			background: var(--events);
-		}
-
-		&:nth-child(7) {
-			background: var(--partnerships);
-		}
-
-		&:nth-child(8) {
-			background: var(--retail-strategy);
-		}
-
-		&:nth-child(9) {
-			background: var(--story);
-		}
-
-		& > h4 {
-			display: block;
-			position: absolute;
-			margin: 0;
-			padding: 0;
-			left: 1rem;
-			bottom: 3rem;
-			font-size: 45px;
-			color: black;
-			transform: rotate(180deg);
-			transition-property: left right transform;
-			transition-duration: 250ms;
-			writing-mode: vertical-rl;
-		}
-
-		& > .accordion-cell-content {
-			display: block;
-			width: 540px;
-			max-height: 1080px;
-			opacity: 0;
-			transition-property: opacity;
-			transition-duration: 250ms;
-			overflow: hidden;
-			font-size: 20px;
-			letter-spacing: -0.48px;
-			font-weight: 600;
-			color: black;
-			top: 90px;
-			position: relative;
-			left: 100px;
-			line-height: 1.7;
-
-			& a {
-				color: black;
-			}
-		}
+	.accordion-cell .accordion-cell-content {
+		width: 100%;
+		max-height: 0;
+		left: 0;
+		top: 0;
+		font-size: 16px; /* Smaller font size for mobile */
+		padding: 40px 10px 10px; /* Add padding for better spacing */
 	}
 
 	.expanded {
-		width: 984px;
+		height: auto;
 
 		& > .accordion-cell-content {
+			max-height: none;
 			opacity: 1;
-			transition-property: opacity;
-			transition-duration: 250ms;
 		}
 	}
 
 	.collapsed {
-		width: 100px;
+		height: auto;
 	}
 }

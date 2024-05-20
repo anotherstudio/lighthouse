@@ -399,41 +399,35 @@
 				.querySelectorAll(".accordion-cell")
 				.forEach(function (element) {
 					element.addEventListener("click", function () {
-						// Check if this element is already expanded
-						if (this.classList.contains("expanded")) {
-							// Check if it is the only expanded element
-							const expandedElements =
-								this.parentElement.querySelectorAll(
-									".accordion-cell.expanded"
-								);
-							if (expandedElements.length === 1) {
-								// Do nothing if this is the only expanded element
-								return;
-							}
-						}
+						const parent = this.parentElement;
 
-						if (this.classList.contains("collapsed")) {
+						// Check if this element is already expanded
+						const isExpanded = this.classList.contains("expanded");
+
+						// If the clicked element is not expanded, expand it and collapse the others
+						if (!isExpanded) {
+							parent
+								.querySelectorAll(".accordion-cell")
+								.forEach(function (sibling) {
+									sibling.classList.remove("expanded");
+									sibling.classList.add("collapsed");
+								});
+
 							this.classList.remove("collapsed");
 							this.classList.add("expanded");
-							this.parentElement
-								.querySelectorAll(".accordion-cell")
-								.forEach(function (sibling) {
-									if (sibling !== element) {
-										sibling.classList.remove("expanded");
-										sibling.classList.add("collapsed");
-									}
-								});
-						} else {
-							this.classList.toggle("expanded");
-							this.parentElement
-								.querySelectorAll(".accordion-cell")
-								.forEach(function (sibling) {
-									if (sibling !== element) {
-										sibling.classList.toggle("collapsed");
-									}
-								});
 						}
 					});
+				});
+
+			// Initially collapse all except the first one
+			document
+				.querySelectorAll(".accordion-cell")
+				.forEach(function (element, index) {
+					if (index === 0) {
+						element.classList.add("expanded");
+					} else {
+						element.classList.add("collapsed");
+					}
 				});
 		</script>
 	</body>
