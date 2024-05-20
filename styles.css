@@ -2,6 +2,15 @@
 	--purple: #949ef8;
 	--orange: #ffa14b;
 	--light-blue: #ecf6ff;
+	--assessment: #bbd6e5;
+	--quick-fix: #7b9889;
+	--roadmap: #f6d7cf;
+	--luxe-express: #a89543;
+	--marketing-strategy: #c9bfad;
+	--events: #cd624e;
+	--partnerships: #43a86b;
+	--retail-strategy: #c8a3d9;
+	--story: #ffe484;
 }
 
 * {
@@ -88,7 +97,8 @@ a {
 		color: black;
 		text-decoration: none;
 
-		&:hover {
+		&:hover,
+		&.active {
 			background: black;
 			color: white;
 			transition: all 0.2s;
@@ -148,6 +158,7 @@ a {
 
 .hero__title {
 	word-wrap: break-word;
+	text-transform: uppercase;
 	margin-left: -13px;
 }
 
@@ -603,6 +614,11 @@ footer {
 			text-decoration: none;
 			margin-right: 12px;
 
+			&:hover {
+				opacity: 60%;
+				transition: opacity 0.2s;
+			}
+
 			&.mail-icon {
 				width: 24px;
 				height: 24px;
@@ -637,5 +653,121 @@ footer {
 				}
 			}
 		}
+	}
+}
+
+/* Services page */
+.services-container {
+	z-index: 50;
+
+	background: linear-gradient(
+		to right,
+		var(--assessment) 50%,
+		var(--story) 50%
+	);
+
+	.accordion {
+		display: flex;
+		justify-content: center;
+		height: 1080px;
+	}
+
+	.accordion-cell {
+		display: inline-block;
+		position: relative;
+		height: 1080px;
+		width: 100px;
+		transition-property: width;
+		transition-duration: 250ms;
+		transition-timing-function: cubic-bezier(1, 0, 0, 1);
+		cursor: pointer;
+		overflow: hidden;
+
+		&:nth-child(1) {
+			background: var(--assessment);
+		}
+
+		&:nth-child(2) {
+			background: var(--quick-fix);
+		}
+
+		&:nth-child(3) {
+			background: var(--roadmap);
+		}
+
+		&:nth-child(4) {
+			background: var(--luxe-express);
+		}
+
+		&:nth-child(5) {
+			background: var(--marketing-strategy);
+		}
+
+		&:nth-child(6) {
+			background: var(--events);
+		}
+
+		&:nth-child(7) {
+			background: var(--partnerships);
+		}
+
+		&:nth-child(8) {
+			background: var(--retail-strategy);
+		}
+
+		&:nth-child(9) {
+			background: var(--story);
+		}
+
+		& > h4 {
+			display: block;
+			position: absolute;
+			margin: 0;
+			padding: 0;
+			left: 1rem;
+			bottom: 3rem;
+			font-size: 45px;
+			color: black;
+			transform: rotate(180deg);
+			transition-property: left right transform;
+			transition-duration: 250ms;
+			writing-mode: vertical-rl;
+		}
+
+		& > .accordion-cell-content {
+			display: block;
+			width: 540px;
+			max-height: 1080px;
+			opacity: 0;
+			transition-property: opacity;
+			transition-duration: 250ms;
+			overflow: hidden;
+			font-size: 20px;
+			letter-spacing: -0.48px;
+			font-weight: 600;
+			color: black;
+			top: 90px;
+			position: relative;
+			left: 100px;
+			line-height: 1.7;
+
+			& a {
+				color: black;
+			}
+		}
+	}
+
+	.expanded {
+		width: 984px;
+
+		& > .accordion-cell-content {
+			opacity: 1;
+			transition-property: opacity;
+			transition-duration: 250ms;
+		}
+	}
+
+	.collapsed {
+		width: 100px;
 	}
 }

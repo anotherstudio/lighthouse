@@ -459,10 +459,6 @@
 
 		<script src="https://cdn.jsdelivr.net/gh/Joe12387/detectIncognito@main/dist/es5/detectIncognito.min.js"></script>
 		<script>
-			document.getElementById("year").innerHTML =
-				new Date().getFullYear();
-		</script>
-		<script>
 			// Check if the user has a dark theme enabled or is in incognito mode
 			detectIncognito().then((result) => {
 				if (result.isPrivate === true) {
@@ -484,6 +480,10 @@
 				document.getElementById("favicon").href =
 					"favicon-32x32--dark.png";
 			}
+		</script>
+		<script>
+			document.getElementById("year").innerHTML =
+				new Date().getFullYear();
 		</script>
 	</body>
 </html>
