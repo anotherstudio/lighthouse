@@ -446,19 +446,19 @@ h2 {
 .gallery {
 	background-color: white;
 	margin-bottom: 100px;
+}
 
-	.gallery-container {
-		.first-image {
-			margin-left: -80px;
-		}
+@media (max-width: 1920px) {
+	.gallery-container img {
+		width: 100%; /* Ensure images resize to fit their container */
+		height: auto; /* Ensure images maintain their aspect ratio */
+		margin-left: 0;
+	}
+}
 
-		.second-image {
-			margin-left: -7px;
-		}
-
-		.third-image {
-			margin-left: -12px;
-		}
+@media (min-width: 1919px) {
+	.gallery-container img {
+		margin-left: -80px;
 	}
 }
 
