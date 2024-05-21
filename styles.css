@@ -441,6 +441,45 @@ h2 {
 	}
 }
 
+@media (max-width: 1180px) {
+	.services {
+		padding-top: 120px;
+		padding-bottom: 190px;
+
+		h2 {
+			margin-bottom: 40px;
+		}
+
+		.view-more {
+			align-self: end;
+		}
+
+		.service-grid {
+			.card {
+				.card-content {
+					.content {
+						.title {
+							max-width: 100%;
+							text-align: left;
+						}
+
+						.description {
+							text-align: left;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+@media (max-width: 1920px) {
+	.services {
+		padding-right: 20px;
+		padding-left: 20px;
+	}
+}
+
 /* Gallery */
 
 .gallery {
@@ -652,6 +691,10 @@ footer .connect-column {
 
 			&:hover {
 				text-decoration: underline;
+			}
+			@media (max-width: 1024px) {
+			}
+			@media (min-width: 1920px) {
 			}
 		}
 	}
