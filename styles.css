@@ -544,115 +544,191 @@ h2 {
 footer {
 	background: var(--orange);
 	color: black;
-	padding-top: 140px;
+	padding-top: 90px;
 	padding-bottom: 50px;
+}
 
-	.logo-column {
-		margin-left: -11px;
+footer .logo-column {
+	margin-left: 40px;
+}
+
+footer .links-column {
+	margin-left: 40px;
+
+	a {
+		display: block;
+		width: fit-content;
+		color: black;
+		font-weight: 600;
+		margin-bottom: 20px;
+		text-decoration: none;
+
+		&:hover {
+			text-decoration: underline;
+		}
 	}
 
-	.links-column {
-		margin-left: -11px;
+	.link-title {
+		font-size: 28px;
+	}
+
+	.link-subtitle {
+		font-size: 20px;
+		opacity: 60%;
+	}
+
+	small {
+		display: inline-block;
+		font-size: 13px;
+		font-weight: 500;
+		opacity: 60%;
+		margin-top: 90px;
+
+		span:first-child {
+			display: inline-block;
+			font-weight: 700;
+			margin-bottom: 5px;
+		}
+	}
+}
+
+footer .connect-column {
+	display: grid;
+	margin-right: 30px;
+	margin-left: -11px;
+
+	h3 {
+		max-width: 450px;
+		font-weight: 600;
+		margin-bottom: 40px;
+	}
+
+	.secondary-button {
+		display: block;
+		width: fit-content;
+		background: white;
+		border: 2px solid white;
+		margin-bottom: 30px;
+	}
+
+	.connect-icon {
+		display: inline-block;
+		text-decoration: none;
+		margin-right: 12px;
+
+		&:hover {
+			opacity: 60%;
+			transition: opacity 0.2s;
+		}
+
+		&.mail-icon {
+			width: 24px;
+			height: 24px;
+		}
+
+		&.facebook-icon,
+		&.linkedin-icon {
+			width: 20px;
+			height: 20px;
+
+			img {
+				margin-bottom: 2px;
+			}
+		}
+	}
+
+	small {
+		display: inline-block;
+		align-self: flex-end;
+		font-size: 13px;
+		font-weight: 600;
+		text-align: right;
+		opacity: 60%;
+		margin-top: 90px;
 
 		a {
-			display: block;
-			width: fit-content;
 			color: black;
-			font-weight: 600;
-			margin-bottom: 20px;
 			text-decoration: none;
 
 			&:hover {
 				text-decoration: underline;
 			}
 		}
+	}
+}
 
-		.link-title {
-			font-size: 28px;
-		}
+/* Media Query for Tablet and Mobile */
+@media (max-width: 1024px) {
+	footer {
+		padding-left: 20px; /* Added left padding */
+		padding-right: 20px; /* Added right padding */
+	}
 
-		.link-subtitle {
-			font-size: 20px;
-			opacity: 60%;
-		}
+	footer .links-column,
+	footer .connect-column {
+		margin-left: 0;
+		text-align: center;
+	}
+
+	footer .connect-column h3 {
+		text-align: center; /* Center align the heading */
+		margin-left: auto;
+		margin-right: auto;
+	}
+}
+
+@media (max-width: 1180px) {
+	.inner-block {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.col-1 {
+		grid-column: span 12;
+		width: 100%;
+		text-align: center;
+	}
+
+	.links-column {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
 
 		small {
-			display: inline-block;
-			font-size: 13px;
-			font-weight: 500;
-			opacity: 60%;
-			margin-top: 90px;
-
-			span:first-child {
-				display: inline-block;
-				font-weight: 700;
-				margin-bottom: 5px;
-			}
+			max-width: 600px;
 		}
 	}
 
+	footer .connect-column .secondary-button,
+	footer .connect-column small,
+	footer .connect-column h3 {
+		margin-left: auto;
+		margin-right: auto;
+		text-align: center;
+	}
+
+	.links-column,
 	.connect-column {
-		display: grid;
+		margin-left: 0;
+		margin-top: 90px;
+		max-width: 100%;
+	}
+
+	.connect-column small {
+		text-align: center;
+		width: 100%;
+	}
+
+	.connect-icon {
+		margin-right: 8px;
+	}
+}
+
+@media (min-width: 1920px) {
+	footer .logo-column,
+	footer .links-column {
 		margin-left: -11px;
-
-		h3 {
-			max-width: 450px;
-			font-weight: 600;
-			margin-bottom: 40px;
-		}
-
-		.secondary-button {
-			display: block;
-			width: fit-content;
-			background: white;
-			border: 2px solid white;
-			margin-bottom: 30px;
-		}
-
-		.connect-icon {
-			display: inline-block;
-			text-decoration: none;
-			margin-right: 12px;
-
-			&:hover {
-				opacity: 60%;
-				transition: opacity 0.2s;
-			}
-
-			&.mail-icon {
-				width: 24px;
-				height: 24px;
-			}
-
-			&.facebook-icon,
-			&.linkedin-icon {
-				width: 20px;
-				height: 20px;
-
-				img {
-					margin-bottom: 2px;
-				}
-			}
-		}
-
-		small {
-			display: inline-block;
-			align-self: flex-end;
-			font-size: 13px;
-			font-weight: 600;
-			text-align: right;
-			opacity: 60%;
-			margin-top: 90px;
-
-			a {
-				color: black;
-				text-decoration: none;
-
-				&:hover {
-					text-decoration: underline;
-				}
-			}
-		}
 	}
 }
 
