@@ -168,6 +168,10 @@ a {
 	line-height: 125%;
 	letter-spacing: -0.7px;
 	margin: 0;
+
+	@media (max-width: 1180px) {
+		font-size: 32px;
+	}
 }
 
 .text-hero {
@@ -206,6 +210,10 @@ h2 {
 	font-size: 90px;
 	line-height: 100%;
 	letter-spacing: -0.48px;
+
+	@media (max-width: 1180px) {
+		font-size: 70px;
+	}
 }
 
 .inner-block {
@@ -393,7 +401,7 @@ h2 {
 				right: 0;
 				z-index: 3;
 				overflow: hidden;
-				padding: 40px;
+				padding: 30px;
 
 				.content {
 					transition: transform 0.4s;
@@ -457,6 +465,8 @@ h2 {
 		.service-grid {
 			.card {
 				.card-content {
+					padding: 20px;
+
 					.content {
 						.title {
 							max-width: 100%;
@@ -707,12 +717,6 @@ footer .connect-column {
 		padding-right: 20px; /* Added right padding */
 	}
 
-	footer .links-column,
-	footer .connect-column {
-		margin-left: 0;
-		text-align: center;
-	}
-
 	footer .connect-column h3 {
 		text-align: center; /* Center align the heading */
 		margin-left: auto;
@@ -721,6 +725,14 @@ footer .connect-column {
 }
 
 @media (max-width: 1180px) {
+	footer .logo-column {
+		margin-left: 0;
+
+		img {
+			max-width: 80%;
+		}
+	}
+
 	.inner-block {
 		display: flex;
 		flex-direction: column;
@@ -730,6 +742,13 @@ footer .connect-column {
 	.col-1 {
 		grid-column: span 12;
 		width: 100%;
+		text-align: center;
+	}
+
+	footer .links-column,
+	footer .connect-column {
+		margin-right: 0;
+		margin-left: 0;
 		text-align: center;
 	}
 
