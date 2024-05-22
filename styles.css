@@ -187,7 +187,10 @@ a {
 	letter-spacing: -2px;
 
 	@media (max-width: 1180px) {
-		font-size: 140px;
+		font-size: 40px;
+		margin-left: 0;
+		text-align: center;
+		padding: 0 15px;
 	}
 }
 
@@ -283,6 +286,75 @@ h2 {
 		p {
 			margin: 0;
 			padding-left: 420px;
+		}
+	}
+}
+
+@media (max-width: 1919px) {
+	.hero {
+		nav {
+			display: flex;
+			margin-bottom: 80px;
+
+			div {
+				gap: 30px;
+			}
+		}
+
+		p {
+			text-align: left;
+			padding: 0 20px;
+		}
+
+		.keywords {
+			margin-top: 40px;
+			margin-bottom: 30px;
+
+			.boutique_advisory {
+				position: relative;
+				transform: none;
+
+				img {
+					display: none;
+				}
+
+				p {
+					padding: 0;
+					margin-top: 60px;
+				}
+			}
+		}
+	}
+}
+
+@media (min-width: 1181px) and (max-width: 1919px) {
+	.hero {
+		nav {
+			display: grid;
+
+			div {
+				width: 100%;
+				padding: 0 40px;
+				align-items: center;
+			}
+		}
+
+		h1,
+		p {
+			padding: 0 50px;
+		}
+
+		h1 {
+			font-size: 130px;
+		}
+
+		.keywords {
+			.boutique_advisory {
+				grid-column: span 12;
+				justify-content: center;
+				padding: 0 40px;
+				margin: 0;
+			}
 		}
 	}
 }
