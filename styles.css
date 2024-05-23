@@ -187,7 +187,7 @@ a {
 	letter-spacing: -2px;
 
 	@media (max-width: 1180px) {
-		font-size: 40px;
+		font-size: 60px;
 		margin-left: 0;
 		text-align: center;
 		padding: 0 15px;
@@ -788,7 +788,7 @@ h2 {
 			margin-top: 80px;
 
 			.team-title h3 {
-				font-size: 40px;
+				font-size: 60px;
 				letter-spacing: normal;
 				margin: 20px 0 50px;
 			}
@@ -1170,5 +1170,34 @@ footer .connect-column {
 
 	.collapsed {
 		height: auto;
+	}
+}
+
+/* About Us page */
+
+.hero__about {
+	background-color: var(--orange);
+
+	.hero__title {
+		max-width: 70%;
+		margin-bottom: 0;
+	}
+
+	.keywords {
+		margin-top: 80px;
+	}
+}
+
+@media (max-width: 1180px) {
+	.hero__about {
+		background-color: var(--orange);
+
+		.hero__title {
+			max-width: 100%;
+		}
+
+		.keywords p {
+			text-align: center;
+		}
 	}
 }
