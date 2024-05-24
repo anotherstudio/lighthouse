@@ -1201,3 +1201,142 @@ footer .connect-column {
 		}
 	}
 }
+
+/* Quotes */
+.slider {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	max-width: 118rem;
+	margin: 0 auto;
+}
+
+.slider-wrapper {
+	overflow: hidden;
+	position: relative;
+	z-index: 1;
+	touch-action: pan-y;
+}
+
+.slides {
+	display: flex;
+	position: relative;
+	top: 0;
+	left: -100%;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	user-select: none;
+	touch-action: pan-y;
+}
+
+.slides.shifting {
+	transition: left 0.2s ease-out;
+}
+
+.slides.dragging {
+	pointer-events: none;
+}
+
+.slide {
+	flex: 1;
+	height: 1000px;
+	cursor: pointer;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	color: black;
+
+	.quote__container {
+		max-width: 1090px;
+		text-align: center;
+
+		.quote__text {
+			margin-bottom: 70px;
+			font-weight: 600;
+		}
+
+		.quote__person {
+			font-size: 20px;
+			font-weight: bold;
+			margin-bottom: 0;
+		}
+
+		.quote__company {
+			font-size: 20px;
+			font-weight: 500;
+			opacity: 50%;
+			margin: 0;
+		}
+	}
+}
+
+.quote {
+	width: 105px;
+	height: 85px;
+	margin-bottom: 80px;
+}
+
+.slider.loaded .slide:nth-child(2),
+.slider.loaded .slide:nth-child(7) {
+	background: var(--story);
+}
+.slider.loaded .slide:nth-child(1),
+.slider.loaded .slide:nth-child(6) {
+	background: #7adcef;
+}
+.slider.loaded .slide:nth-child(3) {
+	background: var(--purple);
+}
+.slider.loaded .slide:nth-child(4) {
+	background: var(--assessment);
+}
+.slider.loaded .slide:nth-child(5) {
+	background: #ff8686;
+}
+
+.slider-dots {
+	text-align: center;
+	position: absolute;
+	z-index: 10;
+	bottom: 0;
+	width: 100%;
+}
+
+.slider-dots span {
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	border-radius: 10px;
+	border: 2px solid black;
+	margin: 10px 5px;
+	cursor: pointer;
+}
+
+.slider-dots span.active {
+	background-color: black;
+}
+
+@media (max-width: 1180px) {
+	.quotes {
+		.slider-wrapper {
+			.slide {
+				padding-bottom: 40px;
+
+				.quote__container {
+					padding: 0 40px;
+
+					.quote__text {
+						font-size: 24px;
+					}
+				}
+			}
+
+			.slider-dots {
+				bottom: 30px;
+			}
+		}
+	}
+}
