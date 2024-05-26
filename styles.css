@@ -1413,7 +1413,7 @@ footer .connect-column {
 		justify-content: space-around;
 		align-items: center;
 		height: 150px;
-		margin-bottom: 0;
+		margin-bottom: 80px;
 
 		img {
 			max-width: 30%;
@@ -1433,7 +1433,9 @@ footer .connect-column {
 }
 
 @media (max-width: 1180px) {
-	.logo-row {
-		margin-bottom: 80px;
+	.clients {
+		.logo-row {
+			margin-bottom: 0;
+		}
 	}
 }
