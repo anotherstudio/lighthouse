@@ -1343,18 +1343,22 @@ footer .connect-column {
 .slider.loaded .slide:nth-child(7) {
 	background: var(--story);
 }
+
 .slider.loaded .slide:nth-child(1),
 .slider.loaded .slide:nth-child(6) {
-	background: #7adcef;
+	background: var(--light-gray);
 }
+
 .slider.loaded .slide:nth-child(3) {
 	background: var(--purple);
 }
+
 .slider.loaded .slide:nth-child(4) {
 	background: var(--assessment);
 }
+
 .slider.loaded .slide:nth-child(5) {
-	background: #ff8686;
+	background: var(--events);
 }
 
 .slider-dots {
@@ -1417,7 +1421,7 @@ footer .connect-column {
 
 		img {
 			max-width: 30%;
-			height: auto;
+			max-height: 120px;
 		}
 	}
 }
@@ -1436,6 +1440,145 @@ footer .connect-column {
 	.clients {
 		.logo-row {
 			margin-bottom: 0;
+		}
+	}
+}
+
+/* Meet our team */
+.meet {
+	color: black;
+	padding: 200px 40px;
+
+	h2 {
+		margin-top: 0;
+	}
+
+	.member {
+		max-width: 550px;
+		margin-bottom: 90px;
+		cursor: pointer;
+
+		img {
+			max-width: 100%;
+			margin-bottom: 30px;
+		}
+
+		p {
+			font-size: 45px;
+			font-weight: bold;
+			margin: 0;
+		}
+	}
+
+	.modal {
+		display: none;
+		position: fixed;
+		z-index: 50;
+		left: 0;
+		top: 0;
+		width: 100vw;
+		height: 100vh;
+		overflow: auto;
+		background-color: rgba(0, 0, 0, 0.4);
+		transition: opacity 0.3s ease;
+		opacity: 0;
+	}
+
+	.modal.show {
+		opacity: 1;
+	}
+
+	.modal.visible {
+		display: block;
+	}
+
+	.modal-content {
+		background-color: white;
+		padding: 70px 100px 70px 80px;
+		width: 100vw;
+		height: 100vh;
+		position: relative;
+		transition: opacity 0.3s ease;
+		overflow: scroll;
+
+		.modal__info {
+			display: flex;
+			flex-direction: row;
+			gap: 110px;
+
+			img {
+				max-width: 550px;
+				max-height: 800px;
+			}
+
+			h3 {
+				font-size: 100px;
+				line-height: 1;
+				margin-top: 0;
+				margin-bottom: 70px;
+			}
+
+			p {
+				max-width: 1000px;
+
+				span {
+					font-weight: bold;
+				}
+			}
+		}
+	}
+
+	.close {
+		font-size: 50px;
+		line-height: 0;
+		color: black;
+		position: absolute;
+		right: 4rem;
+		top: 3rem;
+	}
+
+	.close:hover,
+	.close:focus {
+		opacity: 70%;
+		cursor: pointer;
+	}
+}
+
+@media (max-width: 1180px) {
+	.meet {
+		padding: 100px 20px;
+
+		h2 {
+			font-size: 70px;
+		}
+
+		.modal-content {
+			padding: 60px 30px;
+
+			.close {
+				right: 2rem;
+				top: 2rem;
+			}
+
+			.modal__info {
+				flex-flow: column;
+				align-items: center;
+				gap: 50px;
+
+				img {
+					max-width: 100%;
+				}
+
+				h3 {
+					font-size: 60px;
+					text-align: center;
+				}
+
+				p {
+					font-size: 18px;
+					text-align: center;
+				}
+			}
 		}
 	}
 }

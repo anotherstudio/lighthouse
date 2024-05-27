@@ -48,7 +48,6 @@
 
 		<link rel="manifest" href="site.webmanifest" />
 		<link rel="stylesheet" type="text/css" href="styles.css" />
-		<style></style>
 	</head>
 	<body>
 		<!-- Lines -->
@@ -339,6 +338,137 @@
 							src="assets/clients/manish_malhotra.png"
 							alt="Manish Malhotra"
 						/>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Meet our team -->
+		<section class="meet">
+			<div class="inner-block mw-container mx-auto">
+				<div class="col-1 member">
+					<h2>Meet our team</h2>
+				</div>
+				<div class="col-1 member open-modal" data-modal="modal-1">
+					<img
+						src="assets/team/Priya_Gaekwar.jpg"
+						alt="Priya Gaekwar"
+					/>
+					<p>Priya Gaekwar</p>
+				</div>
+				<div class="col-1 member open-modal" data-modal="modal-2">
+					<img
+						src="assets/team/Anjali_Gaekwar.jpg"
+						alt="Anjali Gaekwar"
+					/>
+					<p>Anjali Gaekwar</p>
+				</div>
+				<div class="col-1 member">
+					<img
+						src="assets/team/team_placeholder.jpg"
+						alt="Priya Mehta"
+					/>
+					<p>Priya Mehta</p>
+				</div>
+				<div class="col-1 member">
+					<img
+						src="assets/team/team_placeholder.jpg"
+						alt="Yahvi Mehta"
+					/>
+					<p>Yahvi Mehta</p>
+				</div>
+				<div class="col-1 member">
+					<img
+						src="assets/team/team_placeholder.jpg"
+						alt="Pooja Sharma Kautiya"
+					/>
+					<p>Pooja Sharma Kautiya</p>
+				</div>
+			</div>
+
+			<!-- Modals -->
+			<div id="modal-1" class="modal">
+				<div class="modal-content">
+					<span class="close">&times;</span>
+					<div class="modal__info">
+						<img
+							src="assets/team/Priya_Gaekwar_full.jpg"
+							alt="Priya Gaekwar"
+						/>
+						<div>
+							<h3>Priya Gaekwar</h3>
+							<p class="body-large">
+								Priya, the in-house strategic powerhouse, leads
+								the Lighthouse team with expansive experience in
+								luxury marketing, having worked with leading
+								global brands and numerous luxury retail
+								projects. With seventeen years in the luxury
+								industry, including managing retail operations
+								at the Louis Vuitton store in Mumbai and serving
+								as the Retail Sales Director at Mumbai’s first
+								multi-brand fashion store, Le Mill, she has
+								developed a specialised understanding of India's
+								luxury market. Originally trained as an interior
+								designer at the Inchbald School of Design in
+								London, Priya crafts pragmatic and successful
+								business plans, providing overall strategies to
+								guide projects to completion. Her attention to
+								detail and creative decision-making set her
+								apart. Outside of work, she indulges her
+								artistic side through painting.
+								<br />
+								<br />
+								<span
+									>TALK TO HER ABOUT: Design at-large, brand
+									positioning and strategy, arts and culture,
+									mid-century modern chairs, gut health and
+									microbiomes, tri colour beagles.</span
+								>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div id="modal-2" class="modal">
+				<div class="modal-content">
+					<span class="close">&times;</span>
+					<div class="modal__info">
+						<img
+							src="assets/team/Priya_Gaekwar_full.jpg"
+							alt="Anjali Gaekwar"
+						/>
+						<div>
+							<h3>Anjali Gaekwar</h3>
+							<p class="body-large">
+								Anjali, the in-house strategic powerhouse, leads
+								the Lighthouse team with expansive experience in
+								luxury marketing, having worked with leading
+								global brands and numerous luxury retail
+								projects. With seventeen years in the luxury
+								industry, including managing retail operations
+								at the Louis Vuitton store in Mumbai and serving
+								as the Retail Sales Director at Mumbai’s first
+								multi-brand fashion store, Le Mill, she has
+								developed a specialised understanding of India's
+								luxury market. Originally trained as an interior
+								designer at the Inchbald School of Design in
+								London, Priya crafts pragmatic and successful
+								business plans, providing overall strategies to
+								guide projects to completion. Her attention to
+								detail and creative decision-making set her
+								apart. Outside of work, she indulges her
+								artistic side through painting.
+								<br />
+								<br />
+								<span
+									>TALK TO HER ABOUT: Design at-large, brand
+									positioning and strategy, arts and culture,
+									mid-century modern chairs, gut health and
+									microbiomes, tri colour beagles.</span
+								>
+							</p>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -718,6 +848,58 @@
 			// Create a new slider instance using the Slider constructor.
 			const slider = Slider("#slider", {
 				dots: ".slider-dots", // Specify the dots for navigation.
+			});
+		</script>
+		<script>
+			// Get all elements that open modals
+			const openModalButtons = document.querySelectorAll(".open-modal");
+
+			// Get all modal elements
+			const modals = document.querySelectorAll(".modal");
+
+			// Get all close buttons
+			const closeButtons = document.querySelectorAll(".close");
+
+			// Function to open modal with transition
+			function openModal(modalId) {
+				const modal = document.getElementById(modalId);
+				modal.classList.add("visible"); // Ensure the modal is displayed
+				setTimeout(() => {
+					modal.classList.add("show"); // Start the opacity transition
+				}, 10); // Small delay to allow display change to take effect
+			}
+
+			// Function to close modal with transition
+			function closeModal(modal) {
+				modal.classList.remove("show"); // Start the opacity transition
+				setTimeout(() => {
+					modal.classList.remove("visible"); // Hide the modal after the transition
+				}, 300); // Delay must match the CSS transition duration
+			}
+
+			// Add click event to each open modal button
+			openModalButtons.forEach((button) => {
+				button.addEventListener("click", () => {
+					const modalId = button.getAttribute("data-modal");
+					openModal(modalId);
+				});
+			});
+
+			// Add click event to each close button
+			closeButtons.forEach((button) => {
+				button.addEventListener("click", () => {
+					const modal = button.closest(".modal");
+					closeModal(modal);
+				});
+			});
+
+			// Add click event to window to close modal when clicking outside of modal-content
+			window.addEventListener("click", (event) => {
+				modals.forEach((modal) => {
+					if (event.target === modal) {
+						closeModal(modal);
+					}
+				});
 			});
 		</script>
 	</body>
