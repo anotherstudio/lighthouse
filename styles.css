@@ -111,6 +111,10 @@ a {
 			color: white;
 			transition: all 0.2s;
 		}
+
+		&.active {
+			cursor: default;
+		}
 	}
 
 	&.button {
@@ -1237,12 +1241,19 @@ footer .connect-column {
 	background-color: var(--orange);
 
 	.hero__title {
-		max-width: 70%;
+		max-width: 80%;
 		margin-bottom: 0;
 	}
 
 	.keywords {
-		margin-top: 80px;
+		position: absolute;
+		bottom: 80px;
+		left: 30px;
+		margin: 0;
+
+		p {
+			margin: 0;
+		}
 	}
 }
 
@@ -1256,6 +1267,59 @@ footer .connect-column {
 
 		.keywords p {
 			text-align: center;
+		}
+	}
+}
+
+/* About information */
+.information {
+	color: black;
+
+	.content {
+		padding: 0;
+
+		h3 {
+			margin-top: 260px;
+			margin-bottom: 60px;
+		}
+
+		p {
+			font-size: 20px;
+			font-weight: 600;
+		}
+	}
+
+	.image {
+		display: flex;
+		justify-content: flex-end;
+
+		img {
+			width: 900px;
+			max-width: 100%;
+			position: relative;
+			right: -20px;
+			bottom: 200px;
+		}
+	}
+}
+
+@media (max-width: 1920px) {
+	.information {
+		.content {
+			padding: 20px;
+
+			h3 {
+				margin-top: 60px;
+			}
+		}
+
+		.image {
+			display: block;
+
+			img {
+				right: 0;
+				bottom: 0;
+			}
 		}
 	}
 }
