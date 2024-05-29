@@ -13,6 +13,7 @@
 	--story: #fecc77;
 	--light-yellow: #ffe484;
 	--light-gray: #f8f8f8;
+	--blue: #385372;
 }
 
 * {
@@ -1319,6 +1320,67 @@ footer .connect-column {
 			img {
 				right: 0;
 				bottom: 0;
+			}
+		}
+	}
+}
+
+/* We are */
+
+.we-are {
+	background: var(--blue);
+	color: white;
+	padding: 250px 0;
+
+	.we-are__top {
+		font-size: 70px;
+		font-weight: bold;
+		border-bottom: 1px solid white;
+		padding-bottom: 134px;
+
+		p {
+			line-height: 1.2;
+			margin: 0;
+
+			span {
+				display: block;
+				text-transform: uppercase;
+			}
+		}
+	}
+
+	.we-are__bottom {
+		font-size: 45px;
+		font-weight: bold;
+		padding-top: 134px;
+
+		p {
+			margin: 0;
+		}
+	}
+}
+
+@media (max-width: 1920px) {
+	.we-are {
+		padding: 100px 20px;
+
+		.we-are__top {
+			padding-bottom: 40px;
+
+			p {
+				text-align: center;
+				font-size: 34px;
+				margin-bottom: 40px;
+			}
+		}
+
+		.we-are__bottom {
+			padding-top: 40px;
+
+			p {
+				text-align: center;
+				font-size: 34px;
+				margin-top: 40px;
 			}
 		}
 	}
