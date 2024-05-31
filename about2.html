@@ -550,7 +550,7 @@
 				<div class="col col-4"></div>
 				<div class="col col-4 pr-md">
 					<strong
-						>Copyright © 2024 Lighthouse. All rights
+						>Copyright © <span id='year'></span> Lighthouse. All rights
 						reserved.</strong
 					>strong><br /><br />
 					All materials on this site, including but not limited to
@@ -566,6 +566,10 @@
 			</div>
 		</footer>
 
+		<script>
+			document.getElementById("year").innerHTML =
+				new Date().getFullYear();
+		</script>
 		<script>
 			document.addEventListener("DOMContentLoaded", function () {
 				const testimonialsContainer =
