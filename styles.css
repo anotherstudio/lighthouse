@@ -299,7 +299,7 @@ body {
     margin-top: 1.25rem;
     display: flex;
     flex-direction: column;
-    row-gap: 1rem;
+    row-gap: 0;
 }
 
 .footer-nav__link {
