@@ -570,7 +570,6 @@ body {
 .hero-block {
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
     padding-top: var(--header-height);
 }
 .hero__eyebrows {
