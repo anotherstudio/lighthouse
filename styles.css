@@ -267,7 +267,7 @@ body {
     font-weight: 800;
     padding: 0.625rem;
 
-    &:hover {
+    &:hover, &.active {
         background: var(--color-black);
         color: var(--color-white);
         transition: all .3s;
