@@ -583,8 +583,6 @@ body {
     align-items: center;
     justify-content: space-between;
 }
-.hero-sidebar__logo {
-}
 .hero-sidebar__eyebrow {
     transform: rotate(-90deg);
     transform-origin: middle;
@@ -916,6 +914,96 @@ body {
 .dot.active {
     background-color: var(--color-black);
 }
+
+
+
+
+
+.team-block {
+    h2 {
+        font-size: 6.25rem;
+        line-height: 1;
+        font-weight: 600;
+        letter-spacing: -.03em;
+        margin-bottom: 5rem;
+    }
+
+    .team-member {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        aspect-ratio: 550 / 639;
+        margin-bottom: 4rem;
+    }
+
+    .modal {
+		display: none;
+		position: fixed;
+		z-index: 50;
+		top: 0;
+        right: 0;
+        bottom: 0;
+		left: 0;
+		width: 100vw;
+		height: 100vh;
+		overflow: auto;
+		transition: opacity 0.3s ease;
+		opacity: 0;
+        background-color: white;
+		padding: 4.375rem 6.25rem 4.375rem 5rem;
+	}
+
+	.modal.show {
+		opacity: 1;
+	}
+
+	.modal.visible {
+		display: flex;
+        flex-direction: column;
+        gap: 2rem;
+	}
+
+	.modal-content {
+		position: relative;
+		transition: opacity 0.3s ease;
+		overflow: scroll;
+
+		.modal__info {
+			img {
+				max-width: 34.375rem;
+				max-height: 50rem;
+			}
+
+			h3 {
+				font-size: 6.25rem;
+				line-height: 1;
+				margin-top: 0;
+				margin-bottom: 4.375rem;
+			}
+
+			p {
+				max-width: 62.5rem;
+
+				span {
+					font-weight: bold;
+				}
+			}
+		}
+	}
+
+	.close {
+		font-size: 3.125rem;
+		line-height: 0;
+        align-self: flex-end;
+	}
+
+	.close:hover,
+	.close:focus {
+		opacity: 70%;
+		cursor: pointer;
+	}
+}
+
 
 
 

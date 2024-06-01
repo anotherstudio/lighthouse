@@ -396,6 +396,90 @@
 			<div class="dots-container"></div>
 		</section>
 
+		<section class="team-block spacing-x spacing-y--section">
+			<div class="grid gutter-x mw-container mx-auto relative">
+				<div class="col col-4">
+					<h2 class="heading--block">
+						Meet <br />
+						our team
+					</h2>
+				</div>
+				<div
+					class="col col-4 team-member open-modal"
+					data-modal="modal-1"
+				>
+					<img
+						src="assets/team/Priya_Gaekwar.jpg"
+						alt="Priya Gaekwar"
+					/>
+					<p class="heading--block mt-sm">Priya Gaekwar</p>
+				</div>
+				<div
+					class="col col-4 team-member open-modal"
+					data-modal="modal-2"
+				>
+					<img
+						src="assets/team/Anjali_Gaekwar.jpg"
+						alt="Anjali Gaekwar"
+					/>
+					<p class="heading--block mt-sm">Anjali Gaekwar</p>
+				</div>
+				<div class="col col-4 team-member">
+					<p class="heading--block mt-sm">Priya Mehta</p>
+				</div>
+				<div class="col col-4 team-member">
+					<p class="heading--block mt-sm">Yahvi Mehta</p>
+				</div>
+				<div class="col col-4 team-member">
+					<p class="heading--block mt-sm">Pooja Sharma Kautiya</p>
+				</div>
+			</div>
+
+			<div id="modal-1" class="modal">
+				<span class="close">&times;</span>
+				<div class="modal-content">
+					<div class="modal__info grid gutter-x mw-container mx-auto">
+						<img
+							class="col col-4"
+							src="assets/team/Priya_Gaekwar_full.jpg"
+							alt="Priya Gaekwar"
+						/>
+						<div class="col col-8">
+							<h3>Priya Gaekwar</h3>
+							<p>
+								Priya, the in-house strategic powerhouse, leads
+								the Lighthouse team with expansive experience in
+								luxury marketing, having worked with leading
+								global brands and numerous luxury retail
+								projects. With seventeen years in the luxury
+								industry, including managing retail operations
+								at the Louis Vuitton store in Mumbai and serving
+								as the Retail Sales Director at Mumbai’s first
+								multi-brand fashion store, Le Mill, she has
+								developed a specialised understanding of India's
+								luxury market. Originally trained as an interior
+								designer at the Inchbald School of Design in
+								London, Priya crafts pragmatic and successful
+								business plans, providing overall strategies to
+								guide projects to completion. Her attention to
+								detail and creative decision-making set her
+								apart. Outside of work, she indulges her
+								artistic side through painting.
+								<br />
+								<br />
+								<span
+									>TALK TO HER ABOUT: Design at-large, brand
+									positioning and strategy, arts and culture,
+									mid-century modern chairs, gut health and
+									microbiomes, tri colour beagles.</span
+								>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
 		<footer class="site-footer spacing-x bg-orange">
 			<div class="grid gutter-x mw-container mx-auto">
 				<div class="col col-4 pr-md">
@@ -667,6 +751,58 @@
 						testimonialsContainer.scrollLeft / slideWidth
 					);
 					setActiveDot(currentIndex);
+				});
+			});
+		</script>
+		<script>
+			// Get all elements that open modals
+			const openModalButtons = document.querySelectorAll(".open-modal");
+
+			// Get all modal elements
+			const modals = document.querySelectorAll(".modal");
+
+			// Get all close buttons
+			const closeButtons = document.querySelectorAll(".close");
+
+			// Function to open modal with transition
+			function openModal(modalId) {
+				const modal = document.getElementById(modalId);
+				modal.classList.add("visible"); // Ensure the modal is displayed
+				setTimeout(() => {
+					modal.classList.add("show"); // Start the opacity transition
+				}, 10); // Small delay to allow display change to take effect
+			}
+
+			// Function to close modal with transition
+			function closeModal(modal) {
+				modal.classList.remove("show"); // Start the opacity transition
+				setTimeout(() => {
+					modal.classList.remove("visible"); // Hide the modal after the transition
+				}, 300); // Delay must match the CSS transition duration
+			}
+
+			// Add click event to each open modal button
+			openModalButtons.forEach((button) => {
+				button.addEventListener("click", () => {
+					const modalId = button.getAttribute("data-modal");
+					openModal(modalId);
+				});
+			});
+
+			// Add click event to each close button
+			closeButtons.forEach((button) => {
+				button.addEventListener("click", () => {
+					const modal = button.closest(".modal");
+					closeModal(modal);
+				});
+			});
+
+			// Add click event to window to close modal when clicking outside of modal-content
+			window.addEventListener("click", (event) => {
+				modals.forEach((modal) => {
+					if (event.target === modal) {
+						closeModal(modal);
+					}
 				});
 			});
 		</script>
