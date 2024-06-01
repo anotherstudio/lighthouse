@@ -542,6 +542,12 @@ body {
 .button--tertiary {
     background-color: var(--color-white);
     color: var(--color-black);
+
+    &:hover, &:focus {
+    background-color: var(--color-black);
+    color: var(--color-white);
+    border-color: transparent;
+}
 }
 
 
