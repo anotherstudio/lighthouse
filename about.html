@@ -116,13 +116,7 @@
 					<div class="mt-md">
 						Ours is a passion-driven project aiming to guide
 						established and emerging luxury brands through the
-						complex world of luxury and retail. We provide expertise
-						in therapy services to help brands overcome pressure
-						points and bring finesse to their products and services.
-						We bring a wealth of exposure, experience, and
-						creativity to every project, crafting compelling and
-						viable retail and brand solutions in collaboration with
-						talented industry experts.
+						complex 
 					</div>
 				</div>
 				<div class="col col-6 relative">
@@ -174,14 +168,7 @@
 							alt="Quotemarks"
 						/>
 						<div class="testimonial__text heading--block">
-							It's always a pleasure to align with Lighthouse. The
-							careful attention to detail by Priya and Anjali and
-							their understanding of both the luxury business and
-							the consumer truly adds value. At Longform India we
-							look for partners who have a 360 degree view on
-							client briefs and reasoning on strategic
-							requirements. Our association with Lighthouse has
-							always been a great one and it's a pleasure to work
+							It'one and it's a pleasure to work
 							with both of them.
 						</div>
 						<div class="testimonial__meta mt-lg">
@@ -202,9 +189,7 @@
 							It's always a pleasure to align with Lighthouse. The
 							careful attention to detail by Priya and Anjali and
 							their understanding of both the luxury business and
-							the consumer truly adds value. At Longform India we
-							look for partners who have a 360 degree view on
-							client briefs and reasoning on strategic
+							the consumer  on strategic
 							requirements. Our association with Lighthouse has
 							always been a great one and it's a pleasure to work
 							with both of them.
@@ -225,11 +210,7 @@
 						/>
 						<div class="testimonial__text heading--block">
 							It's always a pleasure to align with Lighthouse. The
-							careful attention to detail by Priya and Anjali and
-							their understanding of both the luxury business and
-							the consumer truly adds value. At Longform India we
-							look for partners who have a 360 degree view on
-							client briefs and reasoning on strategic
+							careful  on strategic
 							requirements. Our association with Lighthouse has
 							always been a great one and it's a pleasure to work
 							with both of them.
@@ -250,13 +231,7 @@
 						/>
 						<div class="testimonial__text heading--block">
 							It's always a pleasure to align with Lighthouse. The
-							careful attention to detail by Priya and Anjali and
-							their understanding of both the luxury business and
-							the consumer truly adds value. At Longform India we
-							look for partners who have a 360 degree view on
-							client briefs and reasoning on strategic
-							requirements. Our association with Lighthouse has
-							always been a great one and it's a pleasure to work
+							careful at it's a pleasure to work
 							with both of them.
 						</div>
 						<div class="testimonial__meta mt-lg">
@@ -275,12 +250,7 @@
 						/>
 						<div class="testimonial__text heading--block">
 							It's always a pleasure to align with Lighthouse. The
-							careful attention to detail by Priya and Anjali and
-							their understanding of both the luxury business and
-							the consumer truly adds value. At Longform India we
-							look for partners who have a 360 degree view on
-							client briefs and reasoning on strategic
-							requirements. Our association with Lighthouse has
+							careOur association with Lighthouse has
 							always been a great one and it's a pleasure to work
 							with both of them.
 						</div>
@@ -973,70 +943,7 @@
 				const slides = document.querySelectorAll(".testimonial");
 				const slideWidth = testimonialsContainer.offsetWidth;
 
-				let isDragging = false;
-				let startX;
-				let scrollLeftAtStart;
-				let dragStart;
-
-				testimonialsContainer.addEventListener("mousedown", (e) => {
-					isDragging = true;
-					startX = e.pageX - testimonialsContainer.offsetLeft;
-					scrollLeftAtStart = testimonialsContainer.scrollLeft;
-					dragStart = e.pageX;
-					testimonialsContainer.classList.add("dragging");
-				});
-
-				testimonialsContainer.addEventListener("mouseup", () => {
-					isDragging = false;
-					testimonialsContainer.classList.remove("dragging");
-					const dragEnd = dragStart - startX;
-					handleDragEnd(dragEnd);
-				});
-
-				testimonialsContainer.addEventListener("mousemove", (e) => {
-					if (!isDragging) return;
-					const currentX = e.pageX - testimonialsContainer.offsetLeft;
-					const distance = (currentX - startX) * 1.2; // Adjust sensitivity here
-					testimonialsContainer.scrollLeft =
-						scrollLeftAtStart - distance;
-				});
-
-				testimonialsContainer.addEventListener("touchstart", (e) => {
-					isDragging = true;
-					startX =
-						e.touches[0].pageX - testimonialsContainer.offsetLeft;
-					scrollLeftAtStart = testimonialsContainer.scrollLeft;
-					dragStart = e.touches[0].pageX;
-					testimonialsContainer.classList.add("dragging");
-				});
-
-				testimonialsContainer.addEventListener("touchend", () => {
-					isDragging = false;
-					testimonialsContainer.classList.remove("dragging");
-					const dragEnd = dragStart - startX;
-					handleDragEnd(dragEnd);
-				});
-
-				testimonialsContainer.addEventListener("touchmove", (e) => {
-					if (!isDragging) return;
-					const currentX =
-						e.touches[0].pageX - testimonialsContainer.offsetLeft;
-					const distance = (currentX - startX) * 1.2; // Adjust sensitivity here
-					testimonialsContainer.scrollLeft =
-						scrollLeftAtStart - distance;
-				});
-
-				function handleDragEnd(dragDistance) {
-					const dragThreshold = slideWidth * 0.08; // Adjust threshold for responsiveness
-
-					if (dragDistance < -dragThreshold) {
-						scrollToNextSlide();
-					} else if (dragDistance > dragThreshold) {
-						scrollToPrevSlide();
-					} else {
-						scrollToSlide(getCurrentSlideIndex());
-					}
-				}
+				
 
 				function scrollToNextSlide() {
 					const currentSlideIndex = getCurrentSlideIndex();
