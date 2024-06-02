@@ -114,7 +114,7 @@
 					id="content-1"
 					class="accordion-cell expanded heading--block"
 				>
-					<h4>Assesment</h4>
+					<h4 tabindex="0">Assesment</h4>
 					<div class="accordion-cell-content mb-lg">
 						<p>
 							Our mission begins with a complete discovery of your
@@ -133,7 +133,7 @@
 					</div>
 				</div>
 				<div id="content-2" class="accordion-cell heading--block">
-					<h4>Quick Fix</h4>
+					<h4 tabindex="0">Quick Fix</h4>
 					<div class="accordion-cell-content mb-lg">
 						<p>
 							The Lighthouse exclusive. Our 4 step plan evaluate
@@ -147,7 +147,7 @@
 					</div>
 				</div>
 				<div id="content-3" class="accordion-cell heading--block">
-					<h4>Roadmap</h4>
+					<h4 tabindex="0">Roadmap</h4>
 					<div class="accordion-cell-content mb-lg">
 						<p>
 							Leveraging our diverse experience and expertise, we
@@ -161,7 +161,7 @@
 					</div>
 				</div>
 				<div id="content-4" class="accordion-cell heading--block">
-					<h4>Luxe Express</h4>
+					<h4 tabindex="0">Luxe Express</h4>
 					<div class="accordion-cell-content mb-lg">
 						<p>
 							We love to flex our creativity to create campaigns
@@ -173,7 +173,7 @@
 					</div>
 				</div>
 				<div id="content-5" class="accordion-cell heading--block">
-					<h4>Marketing Strategy</h4>
+					<h4 tabindex="0">Marketing Strategy</h4>
 					<div class="accordion-cell-content mb-lg">
 						<p>
 							Our marketing plan covers strategy, concept,
@@ -201,7 +201,7 @@
 					</div>
 				</div>
 				<div id="content-6" class="accordion-cell heading--block">
-					<h4>Events</h4>
+					<h4 tabindex="0">Events</h4>
 					<div class="accordion-cell-content mb-lg">
 						<p>
 							Authentic, in-person encounters leave a lasting
@@ -220,7 +220,7 @@
 					</div>
 				</div>
 				<div id="content-7" class="accordion-cell heading--block">
-					<h4>Partnerships</h4>
+					<h4 tabindex="0">Partnerships</h4>
 					<div class="accordion-cell-content mb-lg">
 						<p>
 							By tapping into our extensive network and peer
@@ -234,7 +234,7 @@
 					</div>
 				</div>
 				<div id="content-8" class="accordion-cell heading--block">
-					<h4>Retail Strategy</h4>
+					<h4 tabindex="0">Retail Strategy</h4>
 					<div class="accordion-cell-content mb-lg">
 						<p>
 							We have an insatiable appetite for all things
@@ -261,7 +261,7 @@
 					</div>
 				</div>
 				<div id="content-9" class="accordion-cell heading--block">
-					<h4>Story</h4>
+					<h4 tabindex="0">Story</h4>
 					<div class="accordion-cell-content mb-lg">
 						<p>
 							We craft a unique verbal and visual identity that
@@ -525,6 +525,16 @@
 							}
 						}
 					});
+
+					// Add keyboard event listener to the headers
+					element
+						.querySelector("h4")
+						.addEventListener("keydown", function (event) {
+							if (event.key === "Enter" || event.key === " ") {
+								event.preventDefault();
+								element.click();
+							}
+						});
 				});
 
 			// Function to expand accordion based on the hash
