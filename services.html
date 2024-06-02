@@ -564,6 +564,9 @@
 
 			// Call the function to expand accordion from hash on page load
 			window.addEventListener("load", expandAccordionFromHash);
+
+			// Listen for hash changes (e.g., when clicking anchor links)
+			window.addEventListener("hashchange", expandAccordionFromHash);
 		</script>
 	</body>
 </html>
