@@ -698,44 +698,100 @@
 				const testimonialsContainer =
 					document.querySelector(".testimonials");
 				const dotsContainer = document.querySelector(".dots-container");
+				const slides = document.querySelectorAll(".testimonial");
+				const slideWidth = testimonialsContainer.offsetWidth;
 
-				const totalSlides =
-					document.querySelectorAll(".testimonial").length;
-				for (let i = 0; i < totalSlides; i++) {
-					const dot = document.createElement("button");
-					dot.classList.add("dot");
-					dot.setAttribute("tabindex", "0");
-					if (i === 0) {
-						dot.classList.add("active");
+				let isDragging = false;
+				let startX;
+				let scrollLeftAtStart;
+				let dragStart;
+
+				testimonialsContainer.addEventListener("mousedown", (e) => {
+					isDragging = true;
+					startX = e.pageX - testimonialsContainer.offsetLeft;
+					scrollLeftAtStart = testimonialsContainer.scrollLeft;
+					dragStart = e.pageX;
+					testimonialsContainer.classList.add("dragging");
+				});
+
+				testimonialsContainer.addEventListener("mouseup", () => {
+					isDragging = false;
+					testimonialsContainer.classList.remove("dragging");
+					const dragEnd = dragStart - startX;
+					handleDragEnd(dragEnd);
+				});
+
+				testimonialsContainer.addEventListener("mousemove", (e) => {
+					if (!isDragging) return;
+					const currentX = e.pageX - testimonialsContainer.offsetLeft;
+					const distance = (currentX - startX) * 1.2; // Adjust sensitivity here
+					testimonialsContainer.scrollLeft =
+						scrollLeftAtStart - distance;
+				});
+
+				testimonialsContainer.addEventListener("touchstart", (e) => {
+					isDragging = true;
+					startX =
+						e.touches[0].pageX - testimonialsContainer.offsetLeft;
+					scrollLeftAtStart = testimonialsContainer.scrollLeft;
+					dragStart = e.touches[0].pageX;
+					testimonialsContainer.classList.add("dragging");
+				});
+
+				testimonialsContainer.addEventListener("touchend", () => {
+					isDragging = false;
+					testimonialsContainer.classList.remove("dragging");
+					const dragEnd = dragStart - startX;
+					handleDragEnd(dragEnd);
+				});
+
+				testimonialsContainer.addEventListener("touchmove", (e) => {
+					if (!isDragging) return;
+					const currentX =
+						e.touches[0].pageX - testimonialsContainer.offsetLeft;
+					const distance = (currentX - startX) * 1.2; // Adjust sensitivity here
+					testimonialsContainer.scrollLeft =
+						scrollLeftAtStart - distance;
+				});
+
+				function handleDragEnd(dragDistance) {
+					const dragThreshold = slideWidth * 0.08; // Adjust threshold for responsiveness
+
+					if (dragDistance < -dragThreshold) {
+						scrollToNextSlide();
+					} else if (dragDistance > dragThreshold) {
+						scrollToPrevSlide();
+					} else {
+						scrollToSlide(getCurrentSlideIndex());
 					}
-					dot.addEventListener("click", () => {
-						scrollToSlide(i);
-						setActiveDot(i);
-					});
-					dot.addEventListener("keydown", (event) => {
-						if (event.key === "Enter" || event.key === " ") {
-							scrollToSlide(i);
-							setActiveDot(i);
-						} else if (event.key === "ArrowRight") {
-							const nextIndex = (i + 1) % totalSlides;
-							scrollToSlide(nextIndex);
-							setActiveDot(nextIndex);
-						} else if (event.key === "ArrowLeft") {
-							const prevIndex =
-								(i - 1 + totalSlides) % totalSlides;
-							scrollToSlide(prevIndex);
-							setActiveDot(prevIndex);
-						}
-					});
-					dotsContainer.appendChild(dot);
+				}
+
+				function scrollToNextSlide() {
+					const currentSlideIndex = getCurrentSlideIndex();
+					const nextIndex = (currentSlideIndex + 1) % slides.length;
+					scrollToSlide(nextIndex);
+				}
+
+				function scrollToPrevSlide() {
+					const currentSlideIndex = getCurrentSlideIndex();
+					const prevIndex =
+						(currentSlideIndex - 1 + slides.length) % slides.length;
+					scrollToSlide(prevIndex);
 				}
 
 				function scrollToSlide(index) {
-					const slideWidth = testimonialsContainer.offsetWidth;
-					testimonialsContainer.scroll({
-						left: slideWidth * index,
+					const scrollDestination = index * slideWidth;
+					testimonialsContainer.scrollTo({
+						left: scrollDestination,
 						behavior: "smooth",
 					});
+					setTimeout(() => setActiveDot(index), 500); // Delay to prevent double blink
+				}
+
+				function getCurrentSlideIndex() {
+					return Math.round(
+						testimonialsContainer.scrollLeft / slideWidth
+					);
 				}
 
 				function setActiveDot(index) {
@@ -743,19 +799,37 @@
 					dots.forEach((dot, i) => {
 						if (i === index) {
 							dot.classList.add("active");
-							dot.focus();
 						} else {
 							dot.classList.remove("active");
 						}
 					});
 				}
 
+				slides.forEach((slide, index) => {
+					const dot = document.createElement("button");
+					dot.classList.add("dot");
+					dot.setAttribute("tabindex", "0");
+					if (index === 0) {
+						dot.classList.add("active");
+					}
+					dot.addEventListener("click", () => {
+						scrollToSlide(index);
+					});
+					dot.addEventListener("keydown", (event) => {
+						if (event.key === "Enter" || event.key === " ") {
+							scrollToSlide(index);
+						} else if (event.key === "ArrowRight") {
+							scrollToNextSlide();
+						} else if (event.key === "ArrowLeft") {
+							scrollToPrevSlide();
+						}
+					});
+					dotsContainer.appendChild(dot);
+				});
+
 				testimonialsContainer.addEventListener("scroll", () => {
-					const slideWidth = testimonialsContainer.offsetWidth;
-					const currentIndex = Math.round(
-						testimonialsContainer.scrollLeft / slideWidth
-					);
-					setActiveDot(currentIndex);
+					const currentSlideIndex = getCurrentSlideIndex();
+					setActiveDot(currentSlideIndex);
 				});
 			});
 		</script>
