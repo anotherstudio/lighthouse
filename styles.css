@@ -940,25 +940,28 @@ body {
 
 .clients-block {
     background-color: var(--color-cultured);
-
     h2 {
         text-align: center;
     }
+}
 
-    .logo__content {
-        display: flex;
-		justify-content: space-around;
-		align-items: center;
-        height: 10rem;
-        
-        img {
-            max-width: 40%;
-            height: auto;
-
-            &.black-and-white {
-                filter: grayscale(100%);
-            }
-        }
+.clients__container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    row-gap: 5rem;
+    mix-blend-mode: multiply;
+}
+.clients__logo {
+    flex-basis: 16.66%;
+    img {
+        display: block;
+        height: auto;
+        max-width: 60%;
+        max-height: 70%;
+        margin: auto;
+        filter: grayscale(100%);
     }
 }
 
