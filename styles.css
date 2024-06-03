@@ -105,9 +105,9 @@ p {
     --color-yellow-crayola: #FFE484;
     --color-cultured: #F8F8F8;
 
-    --spacing-x:                  5rem;
+    --spacing-x:                clamp(24px, 5vw, 80px);
 
-    --spacing-section:          13.75rem;
+    --spacing-section:          clamp(60px, 13vw, 13.75rem);
     --spacing-block:            6.875rem;
     
     --spacing-lg:               5rem;
@@ -116,9 +116,9 @@ p {
     
     --gutter:                   1.5rem;
 
-    --heading-page-size:        9.5vw;
-    --heading-section-size:     6.25rem;
-    --heading-block-size:       2.375rem;
+    --heading-page-size:        clamp(60px, 9.5vw, 190px);
+    --heading-section-size:     clamp(40px, 5.2vw, 100px);
+    --heading-block-size:       clamp(24px, 1.97vw, 38px);
 }
 
 * {
