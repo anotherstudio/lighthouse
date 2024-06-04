@@ -72,7 +72,7 @@ a{
     Variables
 ///////////////////////////////////////////////////////////////////////*/
 :root {
-    --header-height: 8.75rem;
+    --header-height: clamp(5.625rem, 8.75vw, 8.75rem);;
 
     --color-black: #000000;
     --color-white: #ffffff;
@@ -102,8 +102,8 @@ a{
     --gutter:                   1.5rem;
 
     --heading-page-size:        clamp(50px, 9.5vw, 190px);
-    --heading-section-size:     clamp(30px, 5.2vw, 100px);
-    --heading-block-size:       clamp(20px, 1.97vw, 38px);
+    --heading-section-size:     clamp(36px, 5.2vw, 100px);
+    --heading-block-size:       clamp(18px, 1.97vw, 38px);
     --heading-eyebrow-size:     clamp(14px, 1.125vw, 18px);
 }
 
@@ -170,12 +170,20 @@ body {
     line-height: 100%;
     letter-spacing: -.03em;
     font-weight: 600;
+    margin-bottom: var(--spacing-md);
 }
 .heading--block{
     font-size: var(--heading-block-size);
-    line-height: 1.25;
     letter-spacing: -.03em;
     font-weight: 600;
+    max-width: 43.75rem;
+    line-height: 1.5;
+    @media(min-width: 62.5em){
+        line-height: 1.35;
+    }
+    @media(min-width: 100em){
+        line-height: 1.25;
+    }
 }
 .heading--eyebrow{
     font-size: var(--heading-eyebrow-size);
@@ -261,12 +269,15 @@ body {
 /* whitespaces */
 .spacing-x { padding-inline: var(--spacing-x); }
 
-    .spacing-y--section { padding-block: var(--spacing-section); }
-    .spacing-y--block { padding-block: var(--spacing-block); }
+.spacing-y--section { padding-block: var(--spacing-section); }
+.spacing-y--block { padding-block: var(--spacing-block); }
+
 .spacing-t--sm { padding-top: var(--spacing-sm); }
 .spacing-b--sm { padding-bottom: var(--spacing-sm); }
-    .spacing-t--md { padding-top: var(--spacing-md); }
-    .spacing-b--md { padding-bottom: var(--spacing-md); }
+
+.spacing-t--md { padding-top: var(--spacing-md); }
+.spacing-b--md { padding-bottom: var(--spacing-md); }
+
 .spacing-t--lg { padding-top: var(--spacing-lg); }
 .spacing-b--lg { padding-bottom: var(--spacing-lg); }
 
@@ -588,22 +599,39 @@ body {
 ************************************************************************/
 .approach-block{
     overflow: hidden;
+
+    .col-4 {
+        grid-column: span 6;
+        @media(min-width: 62.5em){
+            grid-column: span 4;
+        }
+    }
 }
 .approach__text {
     background-color: var(--color-white);
     padding-right: 5rem;
+    padding-top: var(--spacing-section);
+    padding-bottom: var(--spacing-section);
+    
+    @media(min-width: 31.25em){
+        padding-top: var(--spacing-block);
+        padding-bottom: var(--spacing-block);
+    }
 }
 .approach__text > *{
-    max-width: 37.25rem;
+    @media(min-width: 62.5em){
+        max-width: 37.25rem;
+        padding-left: 0;
+    }
 }
 .approach__text::before {
-    content: '';
-    position: absolute;
-    left: -1000%;
-    top: 0;
-    bottom: 0;
-    right: 100%;
-    background-color: var(--color-white);
+        content: '';
+        position: absolute;
+        left: -1000%;
+        top: 0;
+        bottom: 0;
+        right: 100%;
+        background-color: var(--color-white);
 }
 .approach__images {
     position: absolute;
@@ -615,9 +643,13 @@ body {
 .approach__image--bleed{
     position: absolute;
     top: 0;
-    right: 0;
+    right: 50%;
     bottom: var(--spacing-md);
-    left: 50%;
+    left: 0%;
+    @media(min-width: 62.5em){
+        left: 50%;
+        right: 0;
+    }
 }
 .approach__img {
     position: absolute;
@@ -800,23 +832,40 @@ body {
 /* About home
 ************************************************************************/
 .about-home__eyebrow {
-    position: absolute;
-    top: -4rem;
-    left: 0;
+    margin-bottom: 1rem;
+    @media(min-width: 62.5em){
+        position: absolute;
+        left: 0;
+        top: -4rem;
+    }
 }
 
 
 /* Image grid
 ************************************************************************/
 .image-grid-block {
-    aspect-ratio: 16 / 9;
+    @media(min-width: 43.75em){
+        aspect-ratio: 16 / 9;
+        padding-inline: var(--spacing-x);
+    }
+
+    .col-4 {
+        grid-column: span 12;
+        aspect-ratio: 4 / 3;
+        @media(min-width: 43.75em){
+            grid-column: span 4;
+            aspect-ratio: unset;
+        }
+    }
 }
 .image-grid__image{
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
+    @media(min-width: 43.75em){
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+    }
 }
 .image-grid-inner{
     .col:first-child{
