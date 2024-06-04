@@ -1,0 +1,16 @@
+{
+  "name": "lighthouse",
+  "version": "1.0.0",
+  "main": "detect-incognito.js",
+  "scripts": {
+    "watch-less": "less-watch-compiler src dist"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "less": "^4.2.0",
+    "less-watch-compiler": "^1.16.3"
+  }
+}
