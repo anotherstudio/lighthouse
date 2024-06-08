@@ -1514,7 +1514,7 @@ body {
     flex-grow: 1;
     min-height: 100vh;
     max-height: 125rem;
-    width: 6.25rem;
+    width: 6.25vw;
     transition: all .5s cubic-bezier(1, 0, 0, 1);
     cursor: pointer;
 
