@@ -48,37 +48,37 @@
 
 		<link rel="manifest" href="site.webmanifest" />
 		<link rel="stylesheet" type="text/css" href="styles.css" />
+		<script>
+			function loadHTML(url, elementId, callback) {
+				fetch(url)
+					.then((response) => response.text())
+					.then((data) => {
+						const element = document.getElementById(elementId);
+						element.innerHTML = data;
+
+						// Execute any scripts found in the loaded HTML
+						const scripts = element.getElementsByTagName("script");
+						for (let i = 0; i < scripts.length; i++) {
+							eval(scripts[i].innerText);
+						}
+
+						if (callback) callback();
+					})
+					.catch((error) =>
+						console.log("Error loading HTML: ", error)
+					);
+			}
+
+			document.addEventListener("DOMContentLoaded", function () {
+				loadHTML("nav.html", "nav-placeholder");
+				loadHTML("footer.html", "footer-placeholder");
+			});
+		</script>
 	</head>
 
 	<body>
 		<header class="site-header spacing-x">
-			<nav class="mw-container mx-auto w-100">
-				<ul class="site-header__grid grid gutter-x items-center list-reset">
-					<li class=" col-4">
-						<a href="/">
-							<img
-								class="site-header__logo"
-								alt="Lighthouse logo"
-								src="assets/images/header__logo.svg"
-							/>
-						</a>
-					</li>
-					<li class="col-4">
-						<a
-							href="/services"
-							class="heading--eyebrow site-header__link"
-							>Services</a
-						>
-					</li>
-					<li class=" col-4">
-						<a
-							href="/about"
-							class="heading--eyebrow site-header__link"
-							>About</a
-						>
-					</li>
-				</ul>
-			</nav>
+			<nav id="nav-placeholder" class="mw-container mx-auto w-100" />
 		</header>
 
 		<section class="line-block spacing-x spacing-y h-100vh">
@@ -144,9 +144,7 @@
 			<div
 				class="approach__grid grid gutter-x mw-container mx-auto spacing-t--md spacing-b--md relative"
 			>
-				<div
-					class="approach__text col col-6 mb-md relative"
-				>
+				<div class="approach__text col col-6 mb-md relative">
 					<h2 class="heading--section mb-md">Our approach</h2>
 					<div class="heading--block">
 						Your counterpart. Your business partner-in-crime. We
@@ -182,15 +180,27 @@
 					</h2>
 				</div>
 			</div>
-			<ul class="services-home__grid gutter-x gutter-y mw-container mx-auto list-reset">
+			<ul
+				class="services-home__grid gutter-x gutter-y mw-container mx-auto list-reset"
+			>
 				<li class="services-home-item">
 					<a
 						class="services-home-item__inner"
 						href="/services#content-1"
 					>
-					<svg class="services-home-item__arrow" width="42" height="30" viewBox="0 0 42 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M41.4142 16.4142C42.1953 15.6332 42.1953 14.3668 41.4142 13.5858L28.6863 0.857867C27.9052 0.0768182 26.6389 0.0768181 25.8579 0.857867C25.0768 1.63892 25.0768 2.90525 25.8579 3.68629L37.1716 15L25.8579 26.3137C25.0768 27.0948 25.0768 28.3611 25.8579 29.1421C26.6389 29.9232 27.9052 29.9232 28.6863 29.1421L41.4142 16.4142ZM-1.74846e-07 17L40 17L40 13L1.74846e-07 13L-1.74846e-07 17Z" fill="currentColor"/>
-</svg>
+						<svg
+							class="services-home-item__arrow"
+							width="42"
+							height="30"
+							viewBox="0 0 42 30"
+							fill="none"
+							xmlns="http://www.w3.org/2000/svg"
+						>
+							<path
+								d="M41.4142 16.4142C42.1953 15.6332 42.1953 14.3668 41.4142 13.5858L28.6863 0.857867C27.9052 0.0768182 26.6389 0.0768181 25.8579 0.857867C25.0768 1.63892 25.0768 2.90525 25.8579 3.68629L37.1716 15L25.8579 26.3137C25.0768 27.0948 25.0768 28.3611 25.8579 29.1421C26.6389 29.9232 27.9052 29.9232 28.6863 29.1421L41.4142 16.4142ZM-1.74846e-07 17L40 17L40 13L1.74846e-07 13L-1.74846e-07 17Z"
+								fill="currentColor"
+							/>
+						</svg>
 
 						<h3 class="services-home-item__title">Assesment</h3>
 						<div class="services-home-item__body">
@@ -205,9 +215,19 @@
 						class="services-home-item__inner"
 						href="/services#content-2"
 					>
-					<svg class="services-home-item__arrow" width="42" height="30" viewBox="0 0 42 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M41.4142 16.4142C42.1953 15.6332 42.1953 14.3668 41.4142 13.5858L28.6863 0.857867C27.9052 0.0768182 26.6389 0.0768181 25.8579 0.857867C25.0768 1.63892 25.0768 2.90525 25.8579 3.68629L37.1716 15L25.8579 26.3137C25.0768 27.0948 25.0768 28.3611 25.8579 29.1421C26.6389 29.9232 27.9052 29.9232 28.6863 29.1421L41.4142 16.4142ZM-1.74846e-07 17L40 17L40 13L1.74846e-07 13L-1.74846e-07 17Z" fill="currentColor"/>
-</svg>
+						<svg
+							class="services-home-item__arrow"
+							width="42"
+							height="30"
+							viewBox="0 0 42 30"
+							fill="none"
+							xmlns="http://www.w3.org/2000/svg"
+						>
+							<path
+								d="M41.4142 16.4142C42.1953 15.6332 42.1953 14.3668 41.4142 13.5858L28.6863 0.857867C27.9052 0.0768182 26.6389 0.0768181 25.8579 0.857867C25.0768 1.63892 25.0768 2.90525 25.8579 3.68629L37.1716 15L25.8579 26.3137C25.0768 27.0948 25.0768 28.3611 25.8579 29.1421C26.6389 29.9232 27.9052 29.9232 28.6863 29.1421L41.4142 16.4142ZM-1.74846e-07 17L40 17L40 13L1.74846e-07 13L-1.74846e-07 17Z"
+								fill="currentColor"
+							/>
+						</svg>
 
 						<h3 class="services-home-item__title">Quick Fix</h3>
 						<div class="services-home-item__body">
@@ -220,13 +240,24 @@
 						class="services-home-item__inner"
 						href="/services#content-3"
 					>
-					<svg class="services-home-item__arrow" width="42" height="30" viewBox="0 0 42 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M41.4142 16.4142C42.1953 15.6332 42.1953 14.3668 41.4142 13.5858L28.6863 0.857867C27.9052 0.0768182 26.6389 0.0768181 25.8579 0.857867C25.0768 1.63892 25.0768 2.90525 25.8579 3.68629L37.1716 15L25.8579 26.3137C25.0768 27.0948 25.0768 28.3611 25.8579 29.1421C26.6389 29.9232 27.9052 29.9232 28.6863 29.1421L41.4142 16.4142ZM-1.74846e-07 17L40 17L40 13L1.74846e-07 13L-1.74846e-07 17Z" fill="currentColor"/>
-</svg>
+						<svg
+							class="services-home-item__arrow"
+							width="42"
+							height="30"
+							viewBox="0 0 42 30"
+							fill="none"
+							xmlns="http://www.w3.org/2000/svg"
+						>
+							<path
+								d="M41.4142 16.4142C42.1953 15.6332 42.1953 14.3668 41.4142 13.5858L28.6863 0.857867C27.9052 0.0768182 26.6389 0.0768181 25.8579 0.857867C25.0768 1.63892 25.0768 2.90525 25.8579 3.68629L37.1716 15L25.8579 26.3137C25.0768 27.0948 25.0768 28.3611 25.8579 29.1421C26.6389 29.9232 27.9052 29.9232 28.6863 29.1421L41.4142 16.4142ZM-1.74846e-07 17L40 17L40 13L1.74846e-07 13L-1.74846e-07 17Z"
+								fill="currentColor"
+							/>
+						</svg>
 
 						<h3 class="services-home-item__title">Roadmap</h3>
 						<div class="services-home-item__body">
-							We guide your brand into the future with a clear strategy that guarantees enduring impact.
+							We guide your brand into the future with a clear
+							strategy that guarantees enduring impact.
 						</div>
 					</a>
 				</li>
@@ -235,13 +266,25 @@
 						class="services-home-item__inner"
 						href="/services#content-4"
 					>
-					<svg class="services-home-item__arrow" width="42" height="30" viewBox="0 0 42 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M41.4142 16.4142C42.1953 15.6332 42.1953 14.3668 41.4142 13.5858L28.6863 0.857867C27.9052 0.0768182 26.6389 0.0768181 25.8579 0.857867C25.0768 1.63892 25.0768 2.90525 25.8579 3.68629L37.1716 15L25.8579 26.3137C25.0768 27.0948 25.0768 28.3611 25.8579 29.1421C26.6389 29.9232 27.9052 29.9232 28.6863 29.1421L41.4142 16.4142ZM-1.74846e-07 17L40 17L40 13L1.74846e-07 13L-1.74846e-07 17Z" fill="currentColor"/>
-</svg>
+						<svg
+							class="services-home-item__arrow"
+							width="42"
+							height="30"
+							viewBox="0 0 42 30"
+							fill="none"
+							xmlns="http://www.w3.org/2000/svg"
+						>
+							<path
+								d="M41.4142 16.4142C42.1953 15.6332 42.1953 14.3668 41.4142 13.5858L28.6863 0.857867C27.9052 0.0768182 26.6389 0.0768181 25.8579 0.857867C25.0768 1.63892 25.0768 2.90525 25.8579 3.68629L37.1716 15L25.8579 26.3137C25.0768 27.0948 25.0768 28.3611 25.8579 29.1421C26.6389 29.9232 27.9052 29.9232 28.6863 29.1421L41.4142 16.4142ZM-1.74846e-07 17L40 17L40 13L1.74846e-07 13L-1.74846e-07 17Z"
+								fill="currentColor"
+							/>
+						</svg>
 
 						<h3 class="services-home-item__title">Luxe Express</h3>
 						<div class="services-home-item__body">
-							Short-term interventions designed to bridge the gap from where your brand is now to where it aspires to be.
+							Short-term interventions designed to bridge the gap
+							from where your brand is now to where it aspires to
+							be.
 						</div>
 					</a>
 				</li>
@@ -250,9 +293,19 @@
 						class="services-home-item__inner"
 						href="/services#content-5"
 					>
-					<svg class="services-home-item__arrow" width="42" height="30" viewBox="0 0 42 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M41.4142 16.4142C42.1953 15.6332 42.1953 14.3668 41.4142 13.5858L28.6863 0.857867C27.9052 0.0768182 26.6389 0.0768181 25.8579 0.857867C25.0768 1.63892 25.0768 2.90525 25.8579 3.68629L37.1716 15L25.8579 26.3137C25.0768 27.0948 25.0768 28.3611 25.8579 29.1421C26.6389 29.9232 27.9052 29.9232 28.6863 29.1421L41.4142 16.4142ZM-1.74846e-07 17L40 17L40 13L1.74846e-07 13L-1.74846e-07 17Z" fill="currentColor"/>
-</svg>
+						<svg
+							class="services-home-item__arrow"
+							width="42"
+							height="30"
+							viewBox="0 0 42 30"
+							fill="none"
+							xmlns="http://www.w3.org/2000/svg"
+						>
+							<path
+								d="M41.4142 16.4142C42.1953 15.6332 42.1953 14.3668 41.4142 13.5858L28.6863 0.857867C27.9052 0.0768182 26.6389 0.0768181 25.8579 0.857867C25.0768 1.63892 25.0768 2.90525 25.8579 3.68629L37.1716 15L25.8579 26.3137C25.0768 27.0948 25.0768 28.3611 25.8579 29.1421C26.6389 29.9232 27.9052 29.9232 28.6863 29.1421L41.4142 16.4142ZM-1.74846e-07 17L40 17L40 13L1.74846e-07 13L-1.74846e-07 17Z"
+								fill="currentColor"
+							/>
+						</svg>
 
 						<h3 class="services-home-item__title">
 							Marketing Strategy
@@ -267,9 +320,19 @@
 						class="services-home-item__inner"
 						href="/services#content-6"
 					>
-					<svg class="services-home-item__arrow" width="42" height="30" viewBox="0 0 42 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M41.4142 16.4142C42.1953 15.6332 42.1953 14.3668 41.4142 13.5858L28.6863 0.857867C27.9052 0.0768182 26.6389 0.0768181 25.8579 0.857867C25.0768 1.63892 25.0768 2.90525 25.8579 3.68629L37.1716 15L25.8579 26.3137C25.0768 27.0948 25.0768 28.3611 25.8579 29.1421C26.6389 29.9232 27.9052 29.9232 28.6863 29.1421L41.4142 16.4142ZM-1.74846e-07 17L40 17L40 13L1.74846e-07 13L-1.74846e-07 17Z" fill="currentColor"/>
-</svg>
+						<svg
+							class="services-home-item__arrow"
+							width="42"
+							height="30"
+							viewBox="0 0 42 30"
+							fill="none"
+							xmlns="http://www.w3.org/2000/svg"
+						>
+							<path
+								d="M41.4142 16.4142C42.1953 15.6332 42.1953 14.3668 41.4142 13.5858L28.6863 0.857867C27.9052 0.0768182 26.6389 0.0768181 25.8579 0.857867C25.0768 1.63892 25.0768 2.90525 25.8579 3.68629L37.1716 15L25.8579 26.3137C25.0768 27.0948 25.0768 28.3611 25.8579 29.1421C26.6389 29.9232 27.9052 29.9232 28.6863 29.1421L41.4142 16.4142ZM-1.74846e-07 17L40 17L40 13L1.74846e-07 13L-1.74846e-07 17Z"
+								fill="currentColor"
+							/>
+						</svg>
 
 						<h3 class="services-home-item__title">Events</h3>
 						<div class="services-home-item__body">
@@ -282,9 +345,19 @@
 						class="services-home-item__inner"
 						href="/services#content-7"
 					>
-					<svg class="services-home-item__arrow" width="42" height="30" viewBox="0 0 42 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M41.4142 16.4142C42.1953 15.6332 42.1953 14.3668 41.4142 13.5858L28.6863 0.857867C27.9052 0.0768182 26.6389 0.0768181 25.8579 0.857867C25.0768 1.63892 25.0768 2.90525 25.8579 3.68629L37.1716 15L25.8579 26.3137C25.0768 27.0948 25.0768 28.3611 25.8579 29.1421C26.6389 29.9232 27.9052 29.9232 28.6863 29.1421L41.4142 16.4142ZM-1.74846e-07 17L40 17L40 13L1.74846e-07 13L-1.74846e-07 17Z" fill="currentColor"/>
-</svg>
+						<svg
+							class="services-home-item__arrow"
+							width="42"
+							height="30"
+							viewBox="0 0 42 30"
+							fill="none"
+							xmlns="http://www.w3.org/2000/svg"
+						>
+							<path
+								d="M41.4142 16.4142C42.1953 15.6332 42.1953 14.3668 41.4142 13.5858L28.6863 0.857867C27.9052 0.0768182 26.6389 0.0768181 25.8579 0.857867C25.0768 1.63892 25.0768 2.90525 25.8579 3.68629L37.1716 15L25.8579 26.3137C25.0768 27.0948 25.0768 28.3611 25.8579 29.1421C26.6389 29.9232 27.9052 29.9232 28.6863 29.1421L41.4142 16.4142ZM-1.74846e-07 17L40 17L40 13L1.74846e-07 13L-1.74846e-07 17Z"
+								fill="currentColor"
+							/>
+						</svg>
 
 						<h3 class="services-home-item__title">Partnerships</h3>
 						<div class="services-home-item__body">
@@ -297,15 +370,26 @@
 						class="services-home-item__inner"
 						href="/services#content-8"
 					>
-					<svg class="services-home-item__arrow" width="42" height="30" viewBox="0 0 42 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M41.4142 16.4142C42.1953 15.6332 42.1953 14.3668 41.4142 13.5858L28.6863 0.857867C27.9052 0.0768182 26.6389 0.0768181 25.8579 0.857867C25.0768 1.63892 25.0768 2.90525 25.8579 3.68629L37.1716 15L25.8579 26.3137C25.0768 27.0948 25.0768 28.3611 25.8579 29.1421C26.6389 29.9232 27.9052 29.9232 28.6863 29.1421L41.4142 16.4142ZM-1.74846e-07 17L40 17L40 13L1.74846e-07 13L-1.74846e-07 17Z" fill="currentColor"/>
-</svg>
+						<svg
+							class="services-home-item__arrow"
+							width="42"
+							height="30"
+							viewBox="0 0 42 30"
+							fill="none"
+							xmlns="http://www.w3.org/2000/svg"
+						>
+							<path
+								d="M41.4142 16.4142C42.1953 15.6332 42.1953 14.3668 41.4142 13.5858L28.6863 0.857867C27.9052 0.0768182 26.6389 0.0768181 25.8579 0.857867C25.0768 1.63892 25.0768 2.90525 25.8579 3.68629L37.1716 15L25.8579 26.3137C25.0768 27.0948 25.0768 28.3611 25.8579 29.1421C26.6389 29.9232 27.9052 29.9232 28.6863 29.1421L41.4142 16.4142ZM-1.74846e-07 17L40 17L40 13L1.74846e-07 13L-1.74846e-07 17Z"
+								fill="currentColor"
+							/>
+						</svg>
 
 						<h3 class="services-home-item__title">
 							Retail Strategy
 						</h3>
 						<div class="services-home-item__body">
-							We help brands refine their brand experience with a people-first approach.
+							We help brands refine their brand experience with a
+							people-first approach.
 						</div>
 					</a>
 				</li>
@@ -314,13 +398,24 @@
 						class="services-home-item__inner"
 						href="/services#content-9"
 					>
-					<svg class="services-home-item__arrow" width="42" height="30" viewBox="0 0 42 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M41.4142 16.4142C42.1953 15.6332 42.1953 14.3668 41.4142 13.5858L28.6863 0.857867C27.9052 0.0768182 26.6389 0.0768181 25.8579 0.857867C25.0768 1.63892 25.0768 2.90525 25.8579 3.68629L37.1716 15L25.8579 26.3137C25.0768 27.0948 25.0768 28.3611 25.8579 29.1421C26.6389 29.9232 27.9052 29.9232 28.6863 29.1421L41.4142 16.4142ZM-1.74846e-07 17L40 17L40 13L1.74846e-07 13L-1.74846e-07 17Z" fill="currentColor"/>
-</svg>
+						<svg
+							class="services-home-item__arrow"
+							width="42"
+							height="30"
+							viewBox="0 0 42 30"
+							fill="none"
+							xmlns="http://www.w3.org/2000/svg"
+						>
+							<path
+								d="M41.4142 16.4142C42.1953 15.6332 42.1953 14.3668 41.4142 13.5858L28.6863 0.857867C27.9052 0.0768182 26.6389 0.0768181 25.8579 0.857867C25.0768 1.63892 25.0768 2.90525 25.8579 3.68629L37.1716 15L25.8579 26.3137C25.0768 27.0948 25.0768 28.3611 25.8579 29.1421C26.6389 29.9232 27.9052 29.9232 28.6863 29.1421L41.4142 16.4142ZM-1.74846e-07 17L40 17L40 13L1.74846e-07 13L-1.74846e-07 17Z"
+								fill="currentColor"
+							/>
+						</svg>
 
 						<h3 class="services-home-item__title">Personality</h3>
 						<div class="services-home-item__body">
-							With the strategy codified, we craft a verbal and visual identity designed to be potent and memorable.
+							With the strategy codified, we craft a verbal and
+							visual identity designed to be potent and memorable.
 						</div>
 					</a>
 				</li>
@@ -359,10 +454,16 @@
 							/>
 						</figure>
 					</div>
-					<span>Priya and Anjali Gaekwar<span class="m-hidden op-50"> - Photo courtesy Sunhil Sippy</span></span>
+					<span
+						>Priya and Anjali Gaekwar<span class="m-hidden op-50">
+							- Photo courtesy Sunhil Sippy</span
+						></span
+					>
 				</div>
 				<div class="m-visible">
-					<div class="image-fw__caption">Photo courtesy Sunhil Sippy</div>
+					<div class="image-fw__caption">
+						Photo courtesy Sunhil Sippy
+					</div>
 				</div>
 			</div>
 		</section>
@@ -426,296 +527,7 @@
 			</div>
 		</section>
 
-		<footer class="site-footer spacing-x">
-			<div class="site-footer__grid--top grid gutter-x mw-container mx-auto">
-				<div class=" col-4 pr-md">
-					<img
-						class="site-footer__logo"
-						src="assets/images/logo--color.svg"
-						alt="Lighthouse logo"
-					/>
-					<div class=" col-4 m-visible l-hidden">
-						<div class="heading--block">
-							Every project is tailored<br />
-							to your specific needs
-						</div>
-						<div class="mt-sm">
-							<a
-								class="button button--tertiary"
-								href="mailto:hello@lighthouse"
-							>
-								Connect with us
-							</a>
-						</div>
-						<ul class="social-links list-reset">
-							<li class="">
-								<a class="social-link" href="/facebook">
-									<svg
-										width="40"
-										height="40"
-										viewBox="0 0 40 40"
-										fill="none"
-										xmlns="http://www.w3.org/2000/svg"
-									>
-										<g clip-path="url(#clip0_4592_2796)">
-											<path
-												d="M40 20C40 8.95312 31.0469 0 20 0C8.95313 0 0 8.95312 0 20C0 29.9844 7.3125 38.2578 16.875 39.7578V25.7812H11.7969V20H16.875V15.5937C16.875 10.582 19.8594 7.8125 24.4297 7.8125C26.6172 7.8125 28.9062 8.20312 28.9062 8.20312V13.125H26.3828C23.8984 13.125 23.125 14.668 23.125 16.25V20H28.6719L27.7852 25.7812H23.125V39.7578C32.6875 38.2578 40 29.9844 40 20Z"
-												fill="currentColor"
-											/>
-										</g>
-									</svg>
-								</a>
-							</li>
-							<li class="">
-								<a class="social-link" href="/linkedin">
-									<svg
-										width="41"
-										height="40"
-										viewBox="0 0 41 40"
-										fill="none"
-										xmlns="http://www.w3.org/2000/svg"
-									>
-										<path
-											fill-rule="evenodd"
-											clip-rule="evenodd"
-											d="M20.9043 0C9.8586 0 0.904297 8.9543 0.904297 20C0.904297 31.0457 9.8586 40 20.9043 40C31.95 40 40.9043 31.0457 40.9043 20C40.9043 8.9543 31.95 0 20.9043 0ZM10.5067 16.5646H15.0391V30.1827H10.5067V16.5646ZM15.3375 12.3521C15.308 11.0168 14.3532 9.99981 12.8027 9.99981C11.2522 9.99981 10.2385 11.0168 10.2385 12.3521C10.2385 13.6596 11.2222 14.7059 12.7438 14.7059H12.7728C14.3532 14.7059 15.3375 13.6596 15.3375 12.3521ZM26.166 16.2449C29.1486 16.2449 31.3845 18.1917 31.3845 22.3746L31.3844 30.1828H26.8521V22.8971C26.8521 21.0671 26.1962 19.8184 24.5555 19.8184C23.3033 19.8184 22.5575 20.6602 22.2299 21.4733C22.11 21.7647 22.0806 22.1707 22.0806 22.5777V30.1832H17.5476C17.5476 30.1832 17.6074 17.8429 17.5476 16.5651H22.0806V18.494C22.6822 17.5667 23.7596 16.2449 26.166 16.2449Z"
-											fill="currentColor"
-										/>
-									</svg>
-								</a>
-							</li>
-						</ul>
-					</div>
-					
-				</div>
-				<nav class="footer-nav  col-4 pr-md ">
-					<ul class="footer-nav__items list-reset">
-						<li>
-							<a class="footer-nav__link" href="/about">
-								About
-							</a>
-						</li>
-						<li>
-							<a class="footer-nav__link" href="/services">
-								Services
-							</a>
-							<ul class="footer-nav__subitems list-reset">
-								<li class="footer-nav__subitem">
-									<a
-										class="footer-nav__sublink"
-										href="/services#content-1"
-									>
-										Assesment
-									</a>
-								</li>
-								<li class="footer-nav__subitem">
-									<a
-										class="footer-nav__sublink"
-										href="/services#content-2"
-									>
-										Quick Fix
-									</a>
-								</li>
-								<li class="footer-nav__subitem">
-									<a
-										class="footer-nav__sublink"
-										href="/services#content-3"
-									>
-										Roadmap
-									</a>
-								</li>
-								<li class="footer-nav__subitem">
-									<a
-										class="footer-nav__sublink"
-										href="/services#content-4"
-									>
-										Luxe Express
-									</a>
-								</li>
-								<li class="footer-nav__subitem">
-									<a
-										class="footer-nav__sublink"
-										href="/services#content-5"
-									>
-										Marketing Strategy
-									</a>
-								</li>
-								<li class="footer-nav__subitem">
-									<a
-										class="footer-nav__sublink"
-										href="/services#content-6"
-									>
-										Events
-									</a>
-								</li>
-								<li class="footer-nav__subitem">
-									<a
-										class="footer-nav__sublink"
-										href="/services#content-7"
-									>
-										Partnerships
-									</a>
-								</li>
-								<li class="footer-nav__subitem">
-									<a
-										class="footer-nav__sublink"
-										href="/services#content-8"
-									>
-										Retail Strategy
-									</a>
-								</li>
-								<li class="footer-nav__subitem">
-									<a
-										class="footer-nav__sublink"
-										href="/services#content-9"
-									>
-										Personality
-									</a>
-								</li>
-							</ul>
-						</li>
-					</ul>
-
-					<div class=" col-4 m-hidden">
-						<div class="heading--block">
-							Every project is tailored<br />
-							to your specific needs
-						</div>
-						<div class="mt-sm">
-							<a
-								class="button button--tertiary"
-								href="mailto:hello@lighthouse"
-							>
-								Connect with us
-							</a>
-						</div>
-						<ul class="social-links list-reset">
-							<li class="">
-								<a class="social-link" href="/facebook">
-									<svg
-										width="40"
-										height="40"
-										viewBox="0 0 40 40"
-										fill="none"
-										xmlns="http://www.w3.org/2000/svg"
-									>
-										<g clip-path="url(#clip0_4592_2796)">
-											<path
-												d="M40 20C40 8.95312 31.0469 0 20 0C8.95313 0 0 8.95312 0 20C0 29.9844 7.3125 38.2578 16.875 39.7578V25.7812H11.7969V20H16.875V15.5937C16.875 10.582 19.8594 7.8125 24.4297 7.8125C26.6172 7.8125 28.9062 8.20312 28.9062 8.20312V13.125H26.3828C23.8984 13.125 23.125 14.668 23.125 16.25V20H28.6719L27.7852 25.7812H23.125V39.7578C32.6875 38.2578 40 29.9844 40 20Z"
-												fill="currentColor"
-											/>
-										</g>
-									</svg>
-								</a>
-							</li>
-							<li class="">
-								<a class="social-link" href="/linkedin">
-									<svg
-										width="41"
-										height="40"
-										viewBox="0 0 41 40"
-										fill="none"
-										xmlns="http://www.w3.org/2000/svg"
-									>
-										<path
-											fill-rule="evenodd"
-											clip-rule="evenodd"
-											d="M20.9043 0C9.8586 0 0.904297 8.9543 0.904297 20C0.904297 31.0457 9.8586 40 20.9043 40C31.95 40 40.9043 31.0457 40.9043 20C40.9043 8.9543 31.95 0 20.9043 0ZM10.5067 16.5646H15.0391V30.1827H10.5067V16.5646ZM15.3375 12.3521C15.308 11.0168 14.3532 9.99981 12.8027 9.99981C11.2522 9.99981 10.2385 11.0168 10.2385 12.3521C10.2385 13.6596 11.2222 14.7059 12.7438 14.7059H12.7728C14.3532 14.7059 15.3375 13.6596 15.3375 12.3521ZM26.166 16.2449C29.1486 16.2449 31.3845 18.1917 31.3845 22.3746L31.3844 30.1828H26.8521V22.8971C26.8521 21.0671 26.1962 19.8184 24.5555 19.8184C23.3033 19.8184 22.5575 20.6602 22.2299 21.4733C22.11 21.7647 22.0806 22.1707 22.0806 22.5777V30.1832H17.5476C17.5476 30.1832 17.6074 17.8429 17.5476 16.5651H22.0806V18.494C22.6822 17.5667 23.7596 16.2449 26.166 16.2449Z"
-											fill="currentColor"
-										/>
-									</svg>
-								</a>
-							</li>
-						</ul>
-					</div>
-				</nav>
-				<div class=" col-4 l-visible">
-					<div class="heading--block">
-						Every project is tailored<br />
-						to your specific needs
-					</div>
-					<div class="mt-sm">
-						<a
-							class="button button--tertiary"
-							href="mailto:hello@lighthouse"
-						>
-							Connect with us
-						</a>
-					</div>
-					<ul class="social-links list-reset">
-						<li class="">
-							<a class="social-link" href="/facebook">
-								<svg
-									width="40"
-									height="40"
-									viewBox="0 0 40 40"
-									fill="none"
-									xmlns="http://www.w3.org/2000/svg"
-								>
-									<g clip-path="url(#clip0_4592_2796)">
-										<path
-											d="M40 20C40 8.95312 31.0469 0 20 0C8.95313 0 0 8.95312 0 20C0 29.9844 7.3125 38.2578 16.875 39.7578V25.7812H11.7969V20H16.875V15.5937C16.875 10.582 19.8594 7.8125 24.4297 7.8125C26.6172 7.8125 28.9062 8.20312 28.9062 8.20312V13.125H26.3828C23.8984 13.125 23.125 14.668 23.125 16.25V20H28.6719L27.7852 25.7812H23.125V39.7578C32.6875 38.2578 40 29.9844 40 20Z"
-											fill="currentColor"
-										/>
-									</g>
-								</svg>
-							</a>
-						</li>
-						<li class="">
-							<a class="social-link" href="/linkedin">
-								<svg
-									width="41"
-									height="40"
-									viewBox="0 0 41 40"
-									fill="none"
-									xmlns="http://www.w3.org/2000/svg"
-								>
-									<path
-										fill-rule="evenodd"
-										clip-rule="evenodd"
-										d="M20.9043 0C9.8586 0 0.904297 8.9543 0.904297 20C0.904297 31.0457 9.8586 40 20.9043 40C31.95 40 40.9043 31.0457 40.9043 20C40.9043 8.9543 31.95 0 20.9043 0ZM10.5067 16.5646H15.0391V30.1827H10.5067V16.5646ZM15.3375 12.3521C15.308 11.0168 14.3532 9.99981 12.8027 9.99981C11.2522 9.99981 10.2385 11.0168 10.2385 12.3521C10.2385 13.6596 11.2222 14.7059 12.7438 14.7059H12.7728C14.3532 14.7059 15.3375 13.6596 15.3375 12.3521ZM26.166 16.2449C29.1486 16.2449 31.3845 18.1917 31.3845 22.3746L31.3844 30.1828H26.8521V22.8971C26.8521 21.0671 26.1962 19.8184 24.5555 19.8184C23.3033 19.8184 22.5575 20.6602 22.2299 21.4733C22.11 21.7647 22.0806 22.1707 22.0806 22.5777V30.1832H17.5476C17.5476 30.1832 17.6074 17.8429 17.5476 16.5651H22.0806V18.494C22.6822 17.5667 23.7596 16.2449 26.166 16.2449Z"
-										fill="currentColor"
-									/>
-								</svg>
-							</a>
-						</li>
-					</ul>
-				</div>
-			</div>
-			<div class="footer-legal grid gutter-x mw-container mx-auto">
-				<div class="col col-4"></div>
-				<div class="col col-8">
-					<div class="pb-sm">
-						<strong
-							>Copyright © <span id="year"></span> Lighthouse. All
-							rights reserved.</strong
-						><br /><br />
-						All materials on this site, including but not limited to
-						text, images, graphics, logos, icons, audio clips,
-						digital downloads, data compilations, and software, are
-						the property of Lighthouse or its content suppliers and
-						are protected by international copyright laws.
-					</div>
-					<div class="footer-by flex items-end ">
-						Website by
-						<strong
-							><a
-								href="https://weareanother.studio/"
-								target="_blank"
-								><img
-									src="assets/images/Another_Studio.svg"
-									alt="Another Studio logo" /></a
-						></strong>
-						&
-						<strong
-							><a href="https://thumbstack.co.nz/" target="_blank"
-								>THUMBSTACK</a
-							></strong
-						>
-					</div>
-				</div>
-			</div>
-		</footer>
+		<footer id="footer-placeholder" class="site-footer spacing-x" />
 
 		<script src="detect-incognito.js"></script>
 		<script>
@@ -740,10 +552,6 @@
 				document.getElementById("favicon").href =
 					"favicon-32x32--dark.png";
 			}
-		</script>
-		<script>
-			document.getElementById("year").innerHTML =
-				new Date().getFullYear();
 		</script>
 	</body>
 </html>
