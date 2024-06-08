@@ -108,7 +108,7 @@
 			</div>
 		</section>
 
-		<section class="services-block spacing-x">
+		<section class="services-block">
 			<div class="services-container mw-container mx-auto">
 				<div class="services list-reset">
 					<button id="content-1" class="service is-open">
@@ -497,103 +497,107 @@
 				new Date().getFullYear();
 		</script>
 		<script>
-			// Function to calculate and store service-open width
-			function calculateServiceOpenWidth() {
-				// Get the width of the .services-container
-				const containerWidth = document.querySelector(
-					".services-container"
-				).offsetWidth;
-
-				// Calculate the width of .service-open
-				window.serviceOpenWidth = containerWidth - 800;
-			}
-
-			// Function to handle click on .service elements
-			function handleServiceClick() {
-				const services = document.querySelectorAll(".service");
-
-				// Add click event listener to each service element
-				services.forEach((service) => {
-					service.addEventListener("click", function () {
-						// Remove inline width from any service element that has it
-						services.forEach((s) => {
-							if (s.style.width) {
-								s.style.width = "";
-							}
+			// Check window width and execute JavaScript only if it's above 1280px
+			if (window.innerWidth > 1280) {
+				// Function to calculate and store service-open width
+				function calculateServiceOpenWidth() {
+					// Get the width of the .services-container
+					const containerWidth = document.querySelector(
+						".services-container"
+					).offsetWidth;
+		
+					// Calculate the width of .service-open
+					window.serviceOpenWidth = containerWidth - 800;
+				}
+		
+				// Function to handle click on .service elements
+				function handleServiceClick() {
+					const services = document.querySelectorAll(".service");
+		
+					// Add click event listener to each service element
+					services.forEach((service) => {
+						service.addEventListener("click", function () {
+							// Remove inline width from any service element that has it
+							services.forEach((s) => {
+								if (s.style.width) {
+									s.style.width = "";
+								}
+							});
+		
+							// Remove is-open class from all services
+							services.forEach((s) => {
+								s.classList.remove("is-open");
+							});
+		
+							// Add is-open class to the clicked service
+							this.classList.add("is-open");
+		
+							// Transition the width of the clicked service to service-open width
+							this.style.width = window.serviceOpenWidth + "px";
 						});
-
-						// Remove is-open class from all services
-						services.forEach((s) => {
-							s.classList.remove("is-open");
-						});
-
-						// Add is-open class to the clicked service
-						this.classList.add("is-open");
-
-						// Transition the width of the clicked service to service-open width
-						this.style.width = window.serviceOpenWidth + "px";
+					});
+				}
+		
+				// Function to handle window resize
+				function handleWindowResize() {
+					// Recalculate and store service-open width on window resize
+					window.addEventListener("resize", function () {
+						calculateServiceOpenWidth();
+					});
+				}
+		
+				// Function to expand accordion based on the hash
+				function expandAccordionFromHash() {
+					const hash = window.location.hash;
+		
+					if (hash) {
+						const targetElement = document.querySelector(hash);
+		
+						if (
+							targetElement &&
+							targetElement.classList.contains("service")
+						) {
+							// Collapse all services except the target service
+							document
+								.querySelectorAll(".service")
+								.forEach(function (service) {
+									if (service !== targetElement) {
+										service.classList.remove("is-open");
+										service.style.width = "";
+									}
+								});
+		
+							// Add is-open class to the target service
+							targetElement.classList.add("is-open");
+		
+							// Transition the width of the target service to service-open width
+							targetElement.style.width =
+								window.serviceOpenWidth + "px";
+						}
+					}
+				}
+		
+				// Call the necessary functions on load
+				window.addEventListener("load", function () {
+					// Calculate and store service-open width
+					calculateServiceOpenWidth();
+		
+					// Handle click on .service elements
+					handleServiceClick();
+		
+					// Handle window resize
+					handleWindowResize();
+		
+					// Expand accordion based on hash
+					expandAccordionFromHash();
+		
+					// Listen for hash changes to expand accordion dynamically
+					window.addEventListener("hashchange", function () {
+						expandAccordionFromHash();
 					});
 				});
 			}
-
-			// Function to handle window resize
-			function handleWindowResize() {
-				// Recalculate and store service-open width on window resize
-				window.addEventListener("resize", function () {
-					calculateServiceOpenWidth();
-				});
-			}
-
-			// Function to expand accordion based on the hash
-			function expandAccordionFromHash() {
-				const hash = window.location.hash;
-
-				if (hash) {
-					const targetElement = document.querySelector(hash);
-
-					if (
-						targetElement &&
-						targetElement.classList.contains("service")
-					) {
-						// Collapse all services except the target service
-						document
-							.querySelectorAll(".service")
-							.forEach(function (service) {
-								if (service !== targetElement) {
-									service.classList.remove("is-open");
-									service.style.width = "";
-								}
-							});
-
-						// Add is-open class to the target service
-						targetElement.classList.add("is-open");
-
-						// Transition the width of the target service to service-open width
-						targetElement.style.width =
-							window.serviceOpenWidth + "px";
-					}
-				}
-			}
-
-			// Call the necessary functions on load
-			window.addEventListener("load", function () {
-				// Calculate and store service-open width
-				calculateServiceOpenWidth();
-
-				// Handle click on .service elements
-				handleServiceClick();
-
-				// Handle window resize
-				handleWindowResize();
-
-				// Expand accordion based on hash
-				expandAccordionFromHash();
-
-				// Listen for hash changes to expand accordion dynamically
-				window.addEventListener("hashchange", function () {
-					expandAccordionFromHash();
-				});
-			});
 		</script>
+		
 	</body>
 </html>
