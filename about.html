@@ -6,27 +6,27 @@
 		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
 		<meta
 			name="description"
-			content="A full-stack digital development studio, crafting beautiful and modern solutions in a dynamic digital landscape with lots of moving parts, where a tiny detail can have a huge impact, shaping the success and performance of your business."
+			content=""
 		/>
 		<meta property="og:site_name" content="Lighthouse" />
 		<meta property="og:type" content="website" />
-		<meta property="og:url" content="https://weareanother.studio" />
+		<meta property="og:url" content="https://lighthouseco.in" />
 		<meta
 			property="og:image"
-			content="https://weareanother.studio/og.png"
+			content="og.png"
 		/>
 		<meta property="og:image:width" content="2400" />
 		<meta property="og:image:height" content="1260" />
 		<meta
 			property="og:title"
-			content="Lighthouse • A full-stack digital development studio"
+			content=""
 		/>
 		<meta
 			property="og:description"
-			content="A one-stop shop on your road to success. We craft all things digital, delivering everything you need to make your brand shine and your wallet pop."
+			content=""
 		/>
 
-		<title>Lighthouse - About Us</title>
+		<title></title>
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link
@@ -893,6 +893,70 @@
 					}
 				});
 			});
+		</script>
+		<script>
+			const apiUrl = "http://localhost:1337";
+			const contentType = "api/about-page";
+			const populatedData = "?populate=seo";
+
+			fetch(`${apiUrl}/${contentType}/${populatedData}`, {
+				headers: {
+					Authorization:
+						"Bearer 27aa65d479599088d229e28e00b83a035fcea9641173a48034674b1c2dbdc6e36bc7e5c81bf85b631e78fdf55258aa1ef04be0d8a68b7584968c8c12af3277112dd80fdc685b4d28574c7ada171fc9bc994b25fa558516514ef535069750405821c4cc4ed17f203c5c7eb8f4426bc215ccedb60c7f38cfa5e9965b09721a5027",
+				},
+			})
+				.then((response) => {
+					if (!response.ok) {
+						throw new Error(
+							`HTTP error! Status: ${response.status}`
+						);
+					}
+					return response.json();
+				})
+				.then((responseJson) => {
+					const data = responseJson.data.attributes;
+
+					// Update <title>
+					document.title =
+						data.seo.pageTitle || "Lighthouse - Services";
+
+					// Update <meta> description
+					const metaDescriptionTag = document.querySelector(
+						'meta[name="description"]'
+					);
+					metaDescriptionTag.setAttribute(
+						"content",
+						data.seo.metaDescription || ""
+					);
+
+					// Update Open Graph tags
+					const ogTitleTag = document.querySelector(
+						'meta[property="og:title"]'
+					);
+					ogTitleTag.setAttribute(
+						"content",
+						data.seo.metaTitle || ""
+					);
+
+					const ogDescriptionTag = document.querySelector(
+						'meta[property="og:description"]'
+					);
+					ogDescriptionTag.setAttribute(
+						"content",
+						data.seo.metaDescription || ""
+					);
+
+					const ogImageTag = document.querySelector(
+						'meta[property="og:image"]'
+					);
+					ogImageTag.setAttribute(
+						"content",
+						data.seo.metaImage || ""
+					);
+				})
+				.catch((error) => {
+					console.error("Error fetching data:", error);
+				});
 		</script>
 	</body>
 </html>
