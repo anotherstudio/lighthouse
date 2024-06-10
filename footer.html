@@ -6,21 +6,20 @@
 			alt="Lighthouse logo"
 		/>
 		<div class="col-4 m-visible l-hidden">
-			<div class="heading--block">
-				Every project is tailored<br />
-				to your specific needs
-			</div>
+			<div class="heading--block"></div>
 			<div class="mt-sm">
-				<a
-					class="button button--tertiary"
-					href="mailto:hello@lighthouse"
-				>
-					Connect with us
+				<a class="button" href="mailto:{{footer.button.href}}">
+					{{footer.button.text}}
 				</a>
 			</div>
 			<ul class="social-links list-reset">
-				<li class="">
-					<a aria-label="Access Facebook social network" class="social-link" href="/facebook">
+				<li>
+					<a
+						aria-label="Access social network"
+						class="social-link"
+						target="_blank"
+						href="{{footer.facebookLink}}"
+					>
 						<svg
 							width="40"
 							height="40"
@@ -37,8 +36,13 @@
 						</svg>
 					</a>
 				</li>
-				<li class="">
-					<a aria-label="Access LinkedIn social network" class="social-link" href="/linkedin">
+				<li>
+					<a
+						aria-label="Access social network"
+						class="social-link"
+						target="_blank"
+						href="{{footer.linkedinLink}}"
+					>
 						<svg
 							width="41"
 							height="40"
@@ -61,103 +65,37 @@
 	<nav class="footer-nav col-4 pr-md">
 		<ul class="footer-nav__items list-reset">
 			<li>
-				<a class="footer-nav__link" href="/about"> About </a>
+				<a
+					class="footer-nav__link footer__about"
+					href="{{navigation.href}}"
+					>{{navigation.label}}</a
+				>
 			</li>
 			<li>
-				<a class="footer-nav__link" href="/services"> Services </a>
-				<ul class="footer-nav__subitems list-reset">
-					<li class="footer-nav__subitem">
-						<a
-							class="footer-nav__sublink"
-							href="/services#content-1"
-						>
-							Assesment
-						</a>
-					</li>
-					<li class="footer-nav__subitem">
-						<a
-							class="footer-nav__sublink"
-							href="/services#content-2"
-						>
-							Quick Fix
-						</a>
-					</li>
-					<li class="footer-nav__subitem">
-						<a
-							class="footer-nav__sublink"
-							href="/services#content-3"
-						>
-							Roadmap
-						</a>
-					</li>
-					<li class="footer-nav__subitem">
-						<a
-							class="footer-nav__sublink"
-							href="/services#content-4"
-						>
-							Luxe Express
-						</a>
-					</li>
-					<li class="footer-nav__subitem">
-						<a
-							class="footer-nav__sublink"
-							href="/services#content-5"
-						>
-							Marketing Strategy
-						</a>
-					</li>
-					<li class="footer-nav__subitem">
-						<a
-							class="footer-nav__sublink"
-							href="/services#content-6"
-						>
-							Events
-						</a>
-					</li>
-					<li class="footer-nav__subitem">
-						<a
-							class="footer-nav__sublink"
-							href="/services#content-7"
-						>
-							Partnerships
-						</a>
-					</li>
-					<li class="footer-nav__subitem">
-						<a
-							class="footer-nav__sublink"
-							href="/services#content-8"
-						>
-							Retail Strategy
-						</a>
-					</li>
-					<li class="footer-nav__subitem">
-						<a
-							class="footer-nav__sublink"
-							href="/services#content-9"
-						>
-							Personality
-						</a>
-					</li>
-				</ul>
+				<a
+					class="footer-nav__link footer__services"
+					href="{{navigation.href}}"
+					>{{navigation.label}}</a
+				>
+				<ul class="footer-nav__subitems list-reset"></ul>
 			</li>
 		</ul>
 
 		<div class="col-4 m-hidden">
-			<div class="heading--block">
-				Every project is tailored<br />
-				to your specific needs
-			</div>
+			<div class="heading--block"></div>
 			<div class="mt-sm">
-				<a
-					class="button button--tertiary"
-					href="mailto:hello@lighthouse"
-				>
-					Connect with us
+				<a class="button" href="mailto:{{footer.button.href}}">
+					{{footer.button.text}}
 				</a>
 			</div>
 			<ul class="social-links list-reset">
-				<li class="">
-					<a class="social-link" href="/facebook">
+				<li>
+					<a
+						aria-label="Access social network"
+						class="social-link"
+						target="_blank"
+						href="{{footer.facebookLink}}"
+					>
 						<svg
 							width="40"
 							height="40"
@@ -174,8 +112,13 @@
 						</svg>
 					</a>
 				</li>
-				<li class="">
-					<a class="social-link" href="/linkedin">
+				<li>
+					<a
+						aria-label="Access social network"
+						class="social-link"
+						target="_blank"
+						href="{{footer.linkedinLink}}"
+					>
 						<svg
 							width="41"
 							height="40"
@@ -196,18 +139,20 @@
 		</div>
 	</nav>
 	<div class="col-4 l-visible">
-		<div class="heading--block">
-			Every project is tailored<br />
-			to your specific needs
-		</div>
+		<div class="heading--block"></div>
 		<div class="mt-sm">
-			<a class="button button--tertiary" href="mailto:hello@lighthouse">
-				Connect with us
+			<a class="button" href="mailto:{{footer.button.href}}">
+				{{footer.button.text}}
 			</a>
 		</div>
 		<ul class="social-links list-reset">
-			<li class="">
-				<a class="social-link" href="/facebook">
+			<li>
+				<a
+					aria-label="Access social network"
+					class="social-link"
+					target="_blank"
+					href="{{footer.facebookLink}}"
+				>
 					<svg
 						width="40"
 						height="40"
@@ -224,8 +169,13 @@
 					</svg>
 				</a>
 			</li>
-			<li class="">
-				<a class="social-link" href="/linkedin">
+			<li>
+				<a
+					aria-label="Access social network"
+					class="social-link"
+					target="_blank"
+					href="{{footer.linkedinLink}}"
+				>
 					<svg
 						width="41"
 						height="40"
@@ -253,10 +203,7 @@
 				>Copyright © <span id="year"></span> Lighthouse. All rights
 				reserved.</strong
 			><br /><br />
-			All materials on this site, including but not limited to text,
-			images, graphics, logos, icons, audio clips, digital downloads, data
-			compilations, and software, are the property of Lighthouse or its
-			content suppliers and are protected by international copyright laws.
+			<span class="terms-and-conditions">{{footer.termsConditions}}</span>
 		</div>
 		<div class="footer-by flex items-end">
 			Website by
@@ -278,4 +225,121 @@
 
 <script>
 	document.getElementById("year").innerHTML = new Date().getFullYear();
+</script>
+
+<script>
+	const apiUrl = "http://localhost:1337";
+	const contentType = "api/global";
+	const populatedData = "?populate=navigation.links,footer,footer.button";
+
+	fetch(`${apiUrl}/${contentType}/${populatedData}`, {
+		headers: {
+			Authorization:
+				"Bearer 27aa65d479599088d229e28e00b83a035fcea9641173a48034674b1c2dbdc6e36bc7e5c81bf85b631e78fdf55258aa1ef04be0d8a68b7584968c8c12af3277112dd80fdc685b4d28574c7ada171fc9bc994b25fa558516514ef535069750405821c4cc4ed17f203c5c7eb8f4426bc215ccedb60c7f38cfa5e9965b09721a5027",
+		},
+	})
+		.then((response) => {
+			if (!response.ok) {
+				throw new Error(`HTTP error! Status: ${response.status}`);
+			}
+			return response.json();
+		})
+		.then((responseJson) => {
+			const data = responseJson.data.attributes;
+
+			document
+				.querySelectorAll("#footer-placeholder .heading--block")
+				.forEach((el) => {
+					el.textContent = data.footer.heading;
+				});
+
+			document
+				.querySelectorAll("#footer-placeholder .button")
+				.forEach((el) => {
+					el.href = `mailto:${data.footer.button.href}`;
+					el.classList.add(`button--${data.footer.button.theme}`);
+					el.textContent = data.footer.button.text;
+				});
+
+			document
+				.querySelectorAll(
+					'#footer-placeholder a[href="{{footer.facebookLink}}"]'
+				)
+				.forEach((el) => {
+					el.href = data.footer.facebookLink;
+				});
+
+			document
+				.querySelectorAll(
+					'#footer-placeholder a[href="{{footer.linkedinLink}}"]'
+				)
+				.forEach((el) => {
+					el.href = data.footer.linkedinLink;
+				});
+
+			const aboutEl = document.querySelector(
+				"#footer-placeholder .footer__about"
+			);
+			aboutEl.href = data.navigation.links[0].href;
+			aboutEl.textContent = data.navigation.links[0].label;
+
+			const servicesEl = document.querySelector(
+				"#footer-placeholder .footer__services"
+			);
+			servicesEl.href = data.navigation.links[1].href;
+			servicesEl.textContent = data.navigation.links[1].label;
+
+			const termsEl = document.querySelector(
+				"#footer-placeholder .terms-and-conditions"
+			);
+			termsEl.textContent = data.footer.termsConditions;
+		})
+		.catch((error) => {
+			console.error("Error fetching data:", error);
+		});
+</script>
+
+<script>
+	const apiUrlServices = "http://localhost:1337";
+	const contentTypeServices = "api/services-page";
+	const populatedDataServices = "?populate=services";
+
+	fetch(`${apiUrlServices}/${contentTypeServices}/${populatedDataServices}`, {
+		headers: {
+			Authorization:
+				"Bearer 27aa65d479599088d229e28e00b83a035fcea9641173a48034674b1c2dbdc6e36bc7e5c81bf85b631e78fdf55258aa1ef04be0d8a68b7584968c8c12af3277112dd80fdc685b4d28574c7ada171fc9bc994b25fa558516514ef535069750405821c4cc4ed17f203c5c7eb8f4426bc215ccedb60c7f38cfa5e9965b09721a5027",
+		},
+	})
+		.then((response) => {
+			if (!response.ok) {
+				throw new Error(`HTTP error! Status: ${response.status}`);
+			}
+			return response.json();
+		})
+		.then((responseJson) => {
+			const services = responseJson.data.attributes.services;
+
+			// Reference to the list element
+			const list = document.querySelector(".footer-nav__subitems");
+
+			// Clear existing list items
+			list.innerHTML = "";
+
+			// Iterate over the services data and create list items
+			services.forEach((service, index) => {
+				const listItem = document.createElement("li");
+				listItem.classList.add("footer-nav__subitem");
+
+				const anchor = document.createElement("a");
+				anchor.classList.add("footer-nav__sublink");
+				anchor.href = `/services#content-${index + 1}`;
+				anchor.textContent = service.title;
+
+				listItem.appendChild(anchor);
+				list.appendChild(listItem);
+			});
+		})
+		.catch((error) => {
+			console.error("Error fetching data:", error);
+		});
 </script>

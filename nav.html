@@ -9,9 +9,7 @@
 		</a>
 	</li>
 	<li class="col-4">
-		<a href="" class="heading--eyebrow site-header__link"
-			></a
-		>
+		<a href="" class="heading--eyebrow site-header__link"></a>
 	</li>
 	<li class="col-4">
 		<a href="" class="heading--eyebrow site-header__link"></a>
@@ -31,7 +29,9 @@
 	}
 
 	setActiveNav();
+</script>
 
+<script>
 	const apiUrl = "http://localhost:1337";
 	const contentType = "api/global";
 	const populatedData = "?populate=navigation.links";
@@ -52,7 +52,8 @@
 			const navigationLinks = data.data.attributes.navigation.links;
 
 			navigationLinks.forEach((link, index) => {
-				const navLinkElements = document.querySelectorAll(".site-header__link");
+				const navLinkElements =
+					document.querySelectorAll("#nav-placeholder .site-header__link");
 
 				if (index < navLinkElements.length) {
 					navLinkElements[index].setAttribute("href", link.href);
