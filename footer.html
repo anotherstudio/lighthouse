@@ -1,6 +1,7 @@
 <div class="site-footer__grid--top grid gutter-x mw-container mx-auto">
 	<div class="col-4 pr-md">
 		<img
+			loading="lazy"
 			class="site-footer__logo"
 			src="assets/images/logo--color.svg"
 			alt="Lighthouse logo"
@@ -210,6 +211,7 @@
 			<strong
 				><a href="https://weareanother.studio/" target="_blank"
 					><img
+						loading="lazy"
 						src="assets/images/Another_Studio.svg"
 						alt="Another Studio logo" /></a
 			></strong>
@@ -229,117 +231,104 @@
 
 <script>
 	const apiUrl = "http://localhost:1337";
-	const contentType = "api/global";
-	const populatedData = "?populate=navigation.links,footer,footer.button";
+	const authToken =
+		"Bearer 27aa65d479599088d229e28e00b83a035fcea9641173a48034674b1c2dbdc6e36bc7e5c81bf85b631e78fdf55258aa1ef04be0d8a68b7584968c8c12af3277112dd80fdc685b4d28574c7ada171fc9bc994b25fa558516514ef535069750405821c4cc4ed17f203c5c7eb8f4426bc215ccedb60c7f38cfa5e9965b09721a5027";
 
-	fetch(`${apiUrl}/${contentType}/${populatedData}`, {
-		headers: {
-			Authorization:
-				"Bearer 27aa65d479599088d229e28e00b83a035fcea9641173a48034674b1c2dbdc6e36bc7e5c81bf85b631e78fdf55258aa1ef04be0d8a68b7584968c8c12af3277112dd80fdc685b4d28574c7ada171fc9bc994b25fa558516514ef535069750405821c4cc4ed17f203c5c7eb8f4426bc215ccedb60c7f38cfa5e9965b09721a5027",
-		},
-	})
-		.then((response) => {
+	async function fetchData(endpoint, populatedData, callback) {
+		try {
+			const response = await fetch(
+				`${apiUrl}/api/${endpoint}${populatedData}`,
+				{
+					headers: {
+						Authorization: authToken,
+					},
+				}
+			);
+
 			if (!response.ok) {
 				throw new Error(`HTTP error! Status: ${response.status}`);
 			}
-			return response.json();
-		})
-		.then((responseJson) => {
+
+			const responseJson = await response.json();
 			const data = responseJson.data.attributes;
-
-			document
-				.querySelectorAll("#footer-placeholder .heading--block")
-				.forEach((el) => {
-					el.textContent = data.footer.heading;
-				});
-
-			document
-				.querySelectorAll("#footer-placeholder .button")
-				.forEach((el) => {
-					el.href = `mailto:${data.footer.button.href}`;
-					el.classList.add(`button--${data.footer.button.theme}`);
-					el.textContent = data.footer.button.text;
-				});
-
-			document
-				.querySelectorAll(
-					'#footer-placeholder a[href="{{footer.facebookLink}}"]'
-				)
-				.forEach((el) => {
-					el.href = data.footer.facebookLink;
-				});
-
-			document
-				.querySelectorAll(
-					'#footer-placeholder a[href="{{footer.linkedinLink}}"]'
-				)
-				.forEach((el) => {
-					el.href = data.footer.linkedinLink;
-				});
-
-			const aboutEl = document.querySelector(
-				"#footer-placeholder .footer__about"
-			);
-			aboutEl.href = data.navigation.links[0].href;
-			aboutEl.textContent = data.navigation.links[0].label;
-
-			const servicesEl = document.querySelector(
-				"#footer-placeholder .footer__services"
-			);
-			servicesEl.href = data.navigation.links[1].href;
-			servicesEl.textContent = data.navigation.links[1].label;
-
-			const termsEl = document.querySelector(
-				"#footer-placeholder .terms-and-conditions"
-			);
-			termsEl.textContent = data.footer.termsConditions;
-		})
-		.catch((error) => {
+			callback(data);
+		} catch (error) {
 			console.error("Error fetching data:", error);
-		});
-</script>
+		}
+	}
 
-<script>
-	const apiUrlServices = "http://localhost:1337";
-	const contentTypeServices = "api/services-page";
-	const populatedDataServices = "?populate=services";
-
-	fetch(`${apiUrlServices}/${contentTypeServices}/${populatedDataServices}`, {
-		headers: {
-			Authorization:
-				"Bearer 27aa65d479599088d229e28e00b83a035fcea9641173a48034674b1c2dbdc6e36bc7e5c81bf85b631e78fdf55258aa1ef04be0d8a68b7584968c8c12af3277112dd80fdc685b4d28574c7ada171fc9bc994b25fa558516514ef535069750405821c4cc4ed17f203c5c7eb8f4426bc215ccedb60c7f38cfa5e9965b09721a5027",
-		},
-	})
-		.then((response) => {
-			if (!response.ok) {
-				throw new Error(`HTTP error! Status: ${response.status}`);
-			}
-			return response.json();
-		})
-		.then((responseJson) => {
-			const services = responseJson.data.attributes.services;
-
-			// Reference to the list element
-			const list = document.querySelector(".footer-nav__subitems");
-
-			// Clear existing list items
-			list.innerHTML = "";
-
-			// Iterate over the services data and create list items
-			services.forEach((service, index) => {
-				const listItem = document.createElement("li");
-				listItem.classList.add("footer-nav__subitem");
-
-				const anchor = document.createElement("a");
-				anchor.classList.add("footer-nav__sublink");
-				anchor.href = `/services#content-${index + 1}`;
-				anchor.textContent = service.title;
-
-				listItem.appendChild(anchor);
-				list.appendChild(listItem);
+	function updateGlobalData(data) {
+		document
+			.querySelectorAll("#footer-placeholder .heading--block")
+			.forEach((el) => {
+				el.textContent = data.footer.heading;
 			});
-		})
-		.catch((error) => {
-			console.error("Error fetching data:", error);
+
+		document
+			.querySelectorAll("#footer-placeholder .button")
+			.forEach((el) => {
+				el.href = `mailto:${data.footer.button.href}`;
+				el.classList.add(`button--${data.footer.button.theme}`);
+				el.textContent = data.footer.button.text;
+			});
+
+		document
+			.querySelectorAll(
+				'#footer-placeholder a[href="{{footer.facebookLink}}"]'
+			)
+			.forEach((el) => {
+				el.href = data.footer.facebookLink;
+			});
+
+		document
+			.querySelectorAll(
+				'#footer-placeholder a[href="{{footer.linkedinLink}}"]'
+			)
+			.forEach((el) => {
+				el.href = data.footer.linkedinLink;
+			});
+
+		const aboutEl = document.querySelector(
+			"#footer-placeholder .footer__about"
+		);
+		aboutEl.href = data.navigation.links[0].href;
+		aboutEl.textContent = data.navigation.links[0].label;
+
+		const servicesEl = document.querySelector(
+			"#footer-placeholder .footer__services"
+		);
+		servicesEl.href = data.navigation.links[1].href;
+		servicesEl.textContent = data.navigation.links[1].label;
+
+		const termsEl = document.querySelector(
+			"#footer-placeholder .terms-and-conditions"
+		);
+		termsEl.textContent = data.footer.termsConditions;
+	}
+
+	function updateServicesData(data) {
+		const services = data.services;
+		const list = document.querySelector(".footer-nav__subitems");
+		list.innerHTML = "";
+
+		services.forEach((service, index) => {
+			const listItem = document.createElement("li");
+			listItem.classList.add("footer-nav__subitem");
+
+			const anchor = document.createElement("a");
+			anchor.classList.add("footer-nav__sublink");
+			anchor.href = `/services#content-${index + 1}`;
+			anchor.textContent = service.title;
+
+			listItem.appendChild(anchor);
+			list.appendChild(listItem);
 		});
+	}
+
+	fetchData(
+		"global",
+		"?populate=navigation.links,footer,footer.button",
+		updateGlobalData
+	);
+	fetchData("services-page", "?populate=services", updateServicesData);
 </script>

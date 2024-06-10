@@ -2,6 +2,7 @@
 	<li class="col-4">
 		<a href="/">
 			<img
+				loading="lazy"
 				class="site-header__logo"
 				alt="Lighthouse logo"
 				src="assets/images/header__logo.svg"
@@ -33,13 +34,13 @@
 
 <script>
 	const apiUrl = "http://localhost:1337";
-	const contentType = "api/global";
+	const authToken = "Bearer 27aa65d479599088d229e28e00b83a035fcea9641173a48034674b1c2dbdc6e36bc7e5c81bf85b631e78fdf55258aa1ef04be0d8a68b7584968c8c12af3277112dd80fdc685b4d28574c7ada171fc9bc994b25fa558516514ef535069750405821c4cc4ed17f203c5c7eb8f4426bc215ccedb60c7f38cfa5e9965b09721a5027";
+	const endpoint = "global";
 	const populatedData = "?populate=navigation.links";
 
-	fetch(`${apiUrl}/${contentType}/${populatedData}`, {
+	fetch(`${apiUrl}/api/${endpoint}${populatedData}`, {
 		headers: {
-			Authorization:
-				"Bearer 27aa65d479599088d229e28e00b83a035fcea9641173a48034674b1c2dbdc6e36bc7e5c81bf85b631e78fdf55258aa1ef04be0d8a68b7584968c8c12af3277112dd80fdc685b4d28574c7ada171fc9bc994b25fa558516514ef535069750405821c4cc4ed17f203c5c7eb8f4426bc215ccedb60c7f38cfa5e9965b09721a5027",
+			Authorization: authToken,
 		},
 	})
 		.then((response) => {
@@ -52,8 +53,9 @@
 			const navigationLinks = data.data.attributes.navigation.links;
 
 			navigationLinks.forEach((link, index) => {
-				const navLinkElements =
-					document.querySelectorAll("#nav-placeholder .site-header__link");
+				const navLinkElements = document.querySelectorAll(
+					"#nav-placeholder .site-header__link"
+				);
 
 				if (index < navLinkElements.length) {
 					navLinkElements[index].setAttribute("href", link.href);
