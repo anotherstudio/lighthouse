@@ -225,6 +225,7 @@
 				});
 			}
 		</script>
+
 		<script>
 			const apiUrl =
 				"https://lighthouse-strapi-cms.jxe8y0.easypanel.host";
@@ -389,6 +390,9 @@
 
 						servicesContainer.appendChild(serviceButton);
 					});
+
+					// After dynamically creating the buttons, call handleServiceClick to attach event listeners
+					handleServiceClick();
 				})
 				.catch((error) => {
 					console.error("Error fetching data:", error);
