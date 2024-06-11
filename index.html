@@ -8,7 +8,7 @@
 		<meta property="og:site_name" content="Lighthouse" />
 		<meta property="og:type" content="website" />
 		<meta property="og:url" content="https://lighthouseco.in" />
-		<meta property="og:image" content="og.png" />
+		<meta property="og:image" content="" />
 		<meta property="og:image:width" content="2400" />
 		<meta property="og:image:height" content="1260" />
 		<meta property="og:title" content="" />
@@ -286,7 +286,7 @@
 
 			function updatePageContent(data) {
 				// Update <title>
-				document.title = data.seo.pageTitle || "Lighthouse - Services";
+				document.title = data.seo.pageTitle || "Lighthouse";
 
 				// Update <meta> description
 				const metaDescriptionTag = document.querySelector(
@@ -314,14 +314,18 @@
 				const ogImageTag = document.querySelector(
 					'meta[property="og:image"]'
 				);
-				ogImageTag.setAttribute("content", data.seo.metaImage || "");
+				ogImageTag.setAttribute(
+					"content",
+					data.seo.metaImage.data?.attributes.url
+						? `${apiUrl}${data.seo.metaImage.data.attributes.url}`
+						: ""
+				);
 
 				// Update hero section
 				const heroTitleElement = document.querySelector(
 					".hero-block .heading--page"
 				);
-				heroTitleElement.textContent =
-					data.heroFull.title || "Default Title";
+				heroTitleElement.textContent = data.heroFull.title || "";
 
 				const firstHeadingElement = document.querySelector(
 					".hero-block .heading--block:nth-child(2)"
@@ -579,7 +583,7 @@
 			async function fetchAllData() {
 				try {
 					const homePagePopulatedData =
-						"?populate=seo,heroFull,approach,approach.primaryButton,approach.secondaryButton,approach.firstBackground,approach.secondBackground,ourServices,imageFW,imageFW.backgroundImage,imageFW.firstProfileImage,imageFW.secondProfileImage,about,about.button,imageGrid,imageGrid.firstImage,imageGrid.secondImage,imageGrid.thirdImage";
+						"?populate=seo,seo.metaImage,heroFull,approach,approach.primaryButton,approach.secondaryButton,approach.firstBackground,approach.secondBackground,ourServices,imageFW,imageFW.backgroundImage,imageFW.firstProfileImage,imageFW.secondProfileImage,about,about.button,imageGrid,imageGrid.firstImage,imageGrid.secondImage,imageGrid.thirdImage";
 					const servicesPagePopulatedData = "?populate=services";
 
 					const homePageData = await fetchData(
