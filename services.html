@@ -123,108 +123,6 @@
 					"favicon-32x32--dark.png";
 			}
 		</script>
-		<script>
-			// Check window width and execute JavaScript only if it's above 1280px
-			if (window.innerWidth > 1280) {
-				// Function to calculate and store service-open width
-				function calculateServiceOpenWidth() {
-					// Get the width of the .services-container
-					const containerWidth = document.querySelector(
-						".services-container"
-					).offsetWidth;
-
-					// Calculate the width of .service-open
-					window.serviceOpenWidth = containerWidth - 800;
-				}
-
-				// Function to handle click on .service elements
-				function handleServiceClick() {
-					const services = document.querySelectorAll(".service");
-
-					// Add click event listener to each service element
-					services.forEach((service) => {
-						service.addEventListener("click", function () {
-							// Remove inline width from any service element that has it
-							services.forEach((s) => {
-								if (s.style.width) {
-									s.style.width = "";
-								}
-							});
-
-							// Remove is-open class from all services
-							services.forEach((s) => {
-								s.classList.remove("is-open");
-							});
-
-							// Add is-open class to the clicked service
-							this.classList.add("is-open");
-
-							// Transition the width of the clicked service to service-open width
-							this.style.width = window.serviceOpenWidth + "px";
-						});
-					});
-				}
-
-				// Function to handle window resize
-				function handleWindowResize() {
-					// Recalculate and store service-open width on window resize
-					window.addEventListener("resize", function () {
-						calculateServiceOpenWidth();
-					});
-				}
-
-				// Function to expand accordion based on the hash
-				function expandAccordionFromHash() {
-					const hash = window.location.hash;
-
-					if (hash) {
-						const targetElement = document.querySelector(hash);
-
-						if (
-							targetElement &&
-							targetElement.classList.contains("service")
-						) {
-							// Collapse all services except the target service
-							document
-								.querySelectorAll(".service")
-								.forEach(function (service) {
-									if (service !== targetElement) {
-										service.classList.remove("is-open");
-										service.style.width = "";
-									}
-								});
-
-							// Add is-open class to the target service
-							targetElement.classList.add("is-open");
-
-							// Transition the width of the target service to service-open width
-							targetElement.style.width =
-								window.serviceOpenWidth + "px";
-						}
-					}
-				}
-
-				// Call the necessary functions on load
-				window.addEventListener("load", function () {
-					// Calculate and store service-open width
-					calculateServiceOpenWidth();
-
-					// Handle click on .service elements
-					handleServiceClick();
-
-					// Handle window resize
-					handleWindowResize();
-
-					// Expand accordion based on hash
-					expandAccordionFromHash();
-
-					// Listen for hash changes to expand accordion dynamically
-					window.addEventListener("hashchange", function () {
-						expandAccordionFromHash();
-					});
-				});
-			}
-		</script>
 
 		<script>
 			const apiUrl =
@@ -397,6 +295,135 @@
 				.catch((error) => {
 					console.error("Error fetching data:", error);
 				});
+		</script>
+
+		<script>
+			// Function to calculate and store service-open width
+			function calculateServiceOpenWidth() {
+				const containerWidth = document.querySelector(
+					".services-container"
+				).offsetWidth;
+				window.serviceOpenWidth = containerWidth - 800;
+			}
+
+			// Function to handle click on .service elements
+			function handleServiceClick() {
+				const services = document.querySelectorAll(".service");
+
+				services.forEach((service) => {
+					service.addEventListener("click", function () {
+						services.forEach((s) => {
+							if (s.style.width) {
+								s.style.width = "";
+							}
+							s.classList.remove("is-open");
+						});
+
+						this.classList.add("is-open");
+						this.style.width = window.serviceOpenWidth + "px";
+					});
+				});
+			}
+
+			// Function to handle window resize
+			function handleWindowResize() {
+				window.addEventListener("resize", function () {
+					calculateServiceOpenWidth();
+					const openService =
+						document.querySelector(".service.is-open");
+					if (openService) {
+						openService.style.width =
+							window.serviceOpenWidth + "px";
+					}
+				});
+			}
+
+			// Function to expand accordion based on the hash
+			async function expandAccordionFromHash() {
+				const hash = window.location.hash.slice(1); // Remove the '#' from the hash
+
+				if (hash) {
+					const selector = `#${hash}`;
+					try {
+						const targetElement = await waitForElement(
+							selector,
+							10000
+						); // Wait for 10 seconds
+
+						if (
+							targetElement &&
+							targetElement.classList.contains("service")
+						) {
+							document
+								.querySelectorAll(".service")
+								.forEach((service) => {
+									if (service !== targetElement) {
+										service.classList.remove("is-open");
+										service.style.width = "";
+									}
+								});
+
+							targetElement.classList.add("is-open");
+							targetElement.style.width =
+								window.serviceOpenWidth + "px";
+						}
+					} catch (error) {
+						console.error(error);
+					}
+				}
+			}
+
+			// Function to check if an element with specified selector exists in the DOM
+			function elementExists(selector) {
+				return document.querySelector(selector) !== null;
+			}
+
+			// Function to wait for an element to be loaded based on a selector
+			function waitForElement(selector, timeout) {
+				return new Promise((resolve, reject) => {
+					const startTime = Date.now();
+					const checkInterval = setInterval(() => {
+						if (elementExists(selector)) {
+							clearInterval(checkInterval);
+							resolve(document.querySelector(selector));
+						} else if (Date.now() - startTime > timeout) {
+							clearInterval(checkInterval);
+							reject(
+								new Error(
+									`Timeout waiting for element with selector ${selector}`
+								)
+							);
+						}
+					}, 100); // Poll every 100ms
+				});
+			}
+
+			// Function to initialize everything
+			function initializeAccordion() {
+				if (window.innerWidth > 1280) {
+					calculateServiceOpenWidth();
+					handleServiceClick();
+					handleWindowResize();
+					expandAccordionFromHash();
+
+					window.addEventListener(
+						"resize",
+						calculateServiceOpenWidth
+					);
+					window.addEventListener(
+						"hashchange",
+						expandAccordionFromHash
+					);
+
+					// Check if hash is present on initial load
+					if (window.location.hash) {
+						expandAccordionFromHash();
+					}
+				}
+			}
+
+			// Wait for the DOM content to load before initializing
+			document.addEventListener("DOMContentLoaded", initializeAccordion);
 		</script>
 	</body>
 </html>
