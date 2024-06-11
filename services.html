@@ -312,30 +312,37 @@
 
 				services.forEach((service) => {
 					service.addEventListener("click", function () {
+						const isOpen = this.classList.toggle("is-open");
+
 						services.forEach((s) => {
-							if (s.style.width) {
-								s.style.width = "";
+							if (s !== this) {
+								s.classList.remove("is-open");
+								s.style.width = ""; // Reset other services
 							}
-							s.classList.remove("is-open");
 						});
 
-						this.classList.add("is-open");
-						this.style.width = window.serviceOpenWidth + "px";
+						if (isOpen) {
+							this.style.width = window.serviceOpenWidth + "px";
+							// Scroll horizontally to the selected service
+							this.scrollIntoView({
+								behavior: "smooth",
+								block: "nearest",
+								inline: "start",
+							});
+						} else {
+							this.style.width = ""; // Close the opened service
+						}
 					});
 				});
 			}
 
 			// Function to handle window resize
 			function handleWindowResize() {
-				window.addEventListener("resize", function () {
-					calculateServiceOpenWidth();
-					const openService =
-						document.querySelector(".service.is-open");
-					if (openService) {
-						openService.style.width =
-							window.serviceOpenWidth + "px";
-					}
-				});
+				calculateServiceOpenWidth();
+				const openService = document.querySelector(".service.is-open");
+				if (openService) {
+					openService.style.width = window.serviceOpenWidth + "px";
+				}
 			}
 
 			// Function to expand accordion based on the hash
@@ -345,30 +352,36 @@
 				if (hash) {
 					const selector = `#${hash}`;
 					try {
+						console.log("Expanding accordion for hash:", hash);
+
 						const targetElement = await waitForElement(
 							selector,
 							10000
 						); // Wait for 10 seconds
 
-						if (
-							targetElement &&
-							targetElement.classList.contains("service")
-						) {
-							document
-								.querySelectorAll(".service")
-								.forEach((service) => {
-									if (service !== targetElement) {
-										service.classList.remove("is-open");
-										service.style.width = "";
-									}
-								});
+						console.log("Found target element:", targetElement);
 
-							targetElement.classList.add("is-open");
-							targetElement.style.width =
-								window.serviceOpenWidth + "px";
-						}
+						document
+							.querySelectorAll(".service")
+							.forEach((service) => {
+								if (service !== targetElement) {
+									service.classList.remove("is-open");
+									service.style.width = "";
+								}
+							});
+
+						targetElement.classList.add("is-open");
+						targetElement.style.width =
+							window.serviceOpenWidth + "px";
+
+						console.log("Scrolling to element:", targetElement);
+						targetElement.scrollIntoView({
+							behavior: "smooth",
+							block: "start",
+							inline: "nearest",
+						});
 					} catch (error) {
-						console.error(error);
+						console.error("Error expanding accordion:", error);
 					}
 				}
 			}
@@ -400,25 +413,17 @@
 
 			// Function to initialize everything
 			function initializeAccordion() {
-				if (window.innerWidth > 1280) {
-					calculateServiceOpenWidth();
-					handleServiceClick();
-					handleWindowResize();
+				calculateServiceOpenWidth();
+				handleServiceClick();
+				handleWindowResize();
+				expandAccordionFromHash();
+
+				window.addEventListener("resize", handleWindowResize);
+				window.addEventListener("hashchange", expandAccordionFromHash);
+
+				// Check if hash is present on initial load
+				if (window.location.hash) {
 					expandAccordionFromHash();
-
-					window.addEventListener(
-						"resize",
-						calculateServiceOpenWidth
-					);
-					window.addEventListener(
-						"hashchange",
-						expandAccordionFromHash
-					);
-
-					// Check if hash is present on initial load
-					if (window.location.hash) {
-						expandAccordionFromHash();
-					}
 				}
 			}
 
