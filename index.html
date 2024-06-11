@@ -522,7 +522,7 @@
 				);
 
 				// Iterate over the services data and create a list item for each service
-				data.services.forEach((service) => {
+				data.services.forEach((service, index) => {
 					// Create list item
 					const listItem = document.createElement("li");
 					listItem.classList.add("services-home-item");
@@ -532,7 +532,7 @@
 					anchor.classList.add("services-home-item__inner");
 					anchor.setAttribute(
 						"href",
-						`/services#content-${service.id - 1}`
+						`/services#content-${++index}`
 					);
 
 					// Create SVG element
