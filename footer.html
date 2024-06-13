@@ -317,7 +317,9 @@
 
 			const anchor = document.createElement("a");
 			anchor.classList.add("footer-nav__sublink");
-			anchor.href = `/services#content-${index + 1}`;
+			anchor.href = `/services#${service.title
+				.toLowerCase()
+				.replace(/ /g, "-")}`;
 			anchor.textContent = service.title;
 
 			listItem.appendChild(anchor);

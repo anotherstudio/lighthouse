@@ -235,7 +235,9 @@
 					// Loop through services data and create HTML elements
 					data.services.forEach((service, index) => {
 						const serviceButton = document.createElement("button");
-						serviceButton.id = `content-${index + 1}`;
+						serviceButton.id = service.title
+							.toLowerCase()
+							.replace(/ /g, "-");
 						serviceButton.classList.add("service");
 
 						if (index === 0) {
@@ -323,6 +325,11 @@
 
 						if (isOpen) {
 							this.style.width = window.serviceOpenWidth + "px";
+							// Update hash in URL
+							const serviceId = this.getAttribute("id");
+							if (serviceId) {
+								window.location.hash = serviceId;
+							}
 							// Scroll horizontally to the selected service
 							this.scrollIntoView({
 								behavior: "smooth",
@@ -331,6 +338,8 @@
 							});
 						} else {
 							this.style.width = ""; // Close the opened service
+							// Remove hash from URL
+							history.replaceState(null, null, " ");
 						}
 					});
 				});

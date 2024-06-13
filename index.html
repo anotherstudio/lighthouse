@@ -532,7 +532,9 @@
 					anchor.classList.add("services-home-item__inner");
 					anchor.setAttribute(
 						"href",
-						`/services#content-${++index}`
+						`/services#${service.title
+							.toLowerCase()
+							.replace(/ /g, "-")}`
 					);
 
 					// Create SVG element
