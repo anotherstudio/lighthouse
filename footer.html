@@ -42,7 +42,7 @@
 						aria-label="Access social network"
 						class="social-link"
 						target="_blank"
-						href="{{footer.linkedinLink}}"
+						href="{{footer.instagramLink}}"
 					>
 						<svg
 							width="41"
@@ -118,7 +118,7 @@
 						aria-label="Access social network"
 						class="social-link"
 						target="_blank"
-						href="{{footer.linkedinLink}}"
+						href="{{footer.instagramLink}}"
 					>
 						<svg
 							width="41"
@@ -175,7 +175,7 @@
 					aria-label="Access social network"
 					class="social-link"
 					target="_blank"
-					href="{{footer.linkedinLink}}"
+					href="{{footer.instagramLink}}"
 				>
 					<svg
 						width="41"
@@ -282,10 +282,10 @@
 
 		document
 			.querySelectorAll(
-				'#footer-placeholder a[href="{{footer.linkedinLink}}"]'
+				'#footer-placeholder a[href="{{footer.instagramLink}}"]'
 			)
 			.forEach((el) => {
-				el.href = data.footer.linkedinLink;
+				el.href = data.footer.instagramLink;
 			});
 
 		const aboutEl = document.querySelector(
