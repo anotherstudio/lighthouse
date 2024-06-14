@@ -1141,6 +1141,11 @@ body {
     width: 100%;
     display: flex;
     scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    cursor: grab;
+}
+.testimonials:active {
+    cursor: grabbing;
 }
 .testimonials::-webkit-scrollbar {
     display: none;

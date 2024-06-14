@@ -508,6 +508,59 @@
 
 						prevButton.addEventListener("click", scrollToPrevSlide);
 						nextButton.addEventListener("click", scrollToNextSlide);
+
+						let pos = { top: 0, left: 0, x: 0, y: 0 };
+
+						const mouseDownHandler = function (e) {
+							testimonialsContainer.style.cursor = "grabbing";
+							testimonialsContainer.style.userSelect = "none";
+
+							pos = {
+								left: testimonialsContainer.scrollLeft,
+								top: testimonialsContainer.scrollTop,
+								// Get the current mouse position
+								x: e.clientX,
+								y: e.clientY,
+							};
+
+							document.addEventListener(
+								"mousemove",
+								mouseMoveHandler
+							);
+							document.addEventListener(
+								"mouseup",
+								mouseUpHandler
+							);
+						};
+
+						const mouseMoveHandler = function (e) {
+							const sensitivityFactor = 2;
+
+							// How far the mouse has been moved
+							const dx = (e.clientX - pos.x) * sensitivityFactor;
+							const dy = e.clientY - pos.y;
+
+							// Scroll the element
+							testimonialsContainer.scrollTop = pos.top - dy;
+							testimonialsContainer.scrollLeft = pos.left - dx;
+						};
+
+						const mouseUpHandler = function () {
+							testimonialsContainer.style.cursor = "grab";
+							testimonialsContainer.style.removeProperty("user-select");
+
+							document.removeEventListener(
+								"mousemove",
+								mouseMoveHandler
+							);
+							document.removeEventListener(
+								"mouseup",
+								mouseUpHandler
+							);
+						};
+
+						// Attach the handler
+						testimonialsContainer.addEventListener("mousedown", mouseDownHandler);
 					}
 
 					// Call the initCarousel function to initialize the carousel
