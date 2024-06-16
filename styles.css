@@ -632,6 +632,9 @@ body {
     flex-direction: column;
     padding-top: var(--header-height);
 }
+.hero-block.error404 {
+    min-height: 100vh;
+}
 .hero-sidebar {
     position: absolute;
     top: 0;
