@@ -555,7 +555,7 @@ body {
     font-size: clamp(15px, 1.125vw, 18px);
     line-height: 1;
     font-weight: 600;
-    opacity: .6;
+
 }
 
 .footer-nav__link:hover,
@@ -1233,6 +1233,14 @@ body {
     
     mix-blend-mode: multiply;
 }
+.clients__logo img {
+    display: block;
+        height: auto;
+        max-width: 60%;
+        max-height: 50%;
+        margin: auto;
+        filter: grayscale(100%);
+}
 .clients__logo {
     flex-basis: 50%;
 
@@ -1249,12 +1257,7 @@ body {
         flex-basis: 16.66%;
     }
     img {
-        display: block;
-        height: auto;
-        max-width: 60%;
-        max-height: 70%;
-        margin: auto;
-        filter: grayscale(100%);
+        
     }
 }
 
