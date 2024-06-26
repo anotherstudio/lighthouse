@@ -198,6 +198,7 @@
 		<footer id="footer-placeholder" class="site-footer spacing-x" />
 
 		<script src="detect-incognito.js"></script>
+		<script src="js/marked.min.js"></script>
 		<script>
 			// Check if the user has a dark theme enabled or is in incognito mode
 			detectIncognito().then((result) => {
@@ -676,9 +677,9 @@
                             <h3 class="modal-content__title heading--section mb-md word-per-line">
                                 ${member.name}
                             </h3>
-                            <div class="wysiwyg">
+                            <div>
                                 <p>
-                                    ${member.modalDescription}
+                                    ${marked.parse(member.modalDescription)}
                                 </p>
                             </div>
                         </div>
