@@ -649,6 +649,8 @@
 						modal.id = `modal-${modalIndex}`;
 						modal.className = "modal";
 
+						let modalDescription = member.modalDescription.replace(/\n\s*\n/g, '<br /><br />');
+
 						// Create the inner modal structure
 						modal.innerHTML = `
             <div class="modal-content spacing-x">
@@ -679,7 +681,7 @@
                             </h3>
                             <div>
                                 <p>
-                                    ${marked.parse(member.modalDescription)}
+                                    ${marked.parse(modalDescription, { breaks: true })}
                                 </p>
                             </div>
                         </div>
