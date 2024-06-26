@@ -19,14 +19,26 @@
 
 <script>
 	function setActiveNav() {
-		const currentPath = window.location.pathname;
-		const navLinks = document.querySelectorAll(".site-header__link");
+		let currentPath = window.location.pathname;
 
-		navLinks.forEach((link) => {
-			if (link.getAttribute("href") === currentPath) {
-				link.classList.add("active");
-			}
-		});
+    // Remove the leading '/' if it exists
+    if (currentPath.startsWith('/')) {
+        currentPath = currentPath.substring(1);
+    }
+
+    const navLinks = document.querySelectorAll(".site-header__link");
+
+    navLinks.forEach((link) => {
+        // Get the href attribute value without the leading '/'
+        let href = link.getAttribute("href");
+        if (href.startsWith('/')) {
+            href = href.substring(1);
+        }
+
+        if (href === currentPath) {
+            link.classList.add("active");
+        }
+    });
 	}
 
 	setActiveNav();
