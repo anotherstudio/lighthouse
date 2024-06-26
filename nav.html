@@ -18,33 +18,6 @@
 </ul>
 
 <script>
-	function setActiveNav() {
-		let currentPath = window.location.pathname;
-
-    // Remove the leading '/' if it exists
-    if (currentPath.startsWith('/')) {
-        currentPath = currentPath.substring(1);
-    }
-
-    const navLinks = document.querySelectorAll(".site-header__link");
-
-    navLinks.forEach((link) => {
-        // Get the href attribute value without the leading '/'
-        let href = link.getAttribute("href");
-        if (href.startsWith('/')) {
-            href = href.substring(1);
-        }
-
-        if (href === currentPath) {
-            link.classList.add("active");
-        }
-    });
-	}
-
-	setActiveNav();
-</script>
-
-<script>
 	const apiUrl = "https://lighthouse-strapi-cms.jxe8y0.easypanel.host";
 	const authToken =
 		"Bearer f83b08d3aefbfa313bb074e1f69f8884981f819d779a118a41b81120aa41db455b868afe96418ecaa2cc7cb7709db29edebb7dae190fbc7e7554706254935b2f34f2ad2b80d54b47f4a9e2718546ccec224e892034349ac2557c5cb5ebe308baf7dcbe8c6e377dd6dcc3d34ed4132c2418c9277006bccc68d2211d823760234f";
@@ -75,6 +48,32 @@
 					navLinkElements[index].textContent = link.label;
 				}
 			});
+
+			function setActiveNav() {
+				let currentPath = window.location.pathname;
+
+				// Remove the leading '/' if it exists
+				if (currentPath.startsWith("/")) {
+					currentPath = currentPath.substring(1);
+				}
+
+				const navLinks =
+					document.querySelectorAll(".site-header__link");
+
+				navLinks.forEach((link) => {
+					// Get the href attribute value without the leading '/'
+					let href = link.getAttribute("href");
+					if (href.startsWith("/")) {
+						href = href.substring(1);
+					}
+
+					if (href === currentPath) {
+						link.classList.add("active");
+					}
+				});
+			}
+
+			setActiveNav();
 		})
 		.catch((error) => {
 			console.error("Error fetching data:", error);
