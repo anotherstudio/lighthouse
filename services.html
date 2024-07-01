@@ -361,14 +361,10 @@
 				if (hash) {
 					const selector = `#${hash}`;
 					try {
-						console.log("Expanding accordion for hash:", hash);
-
 						const targetElement = await waitForElement(
 							selector,
 							10000
 						); // Wait for 10 seconds
-
-						console.log("Found target element:", targetElement);
 
 						document
 							.querySelectorAll(".service")
@@ -383,7 +379,6 @@
 						targetElement.style.width =
 							window.serviceOpenWidth + "px";
 
-						console.log("Scrolling to element:", targetElement);
 						targetElement.scrollIntoView({
 							behavior: "smooth",
 							block: "start",
