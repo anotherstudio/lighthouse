@@ -1476,7 +1476,6 @@ body {
         scroll-snap-type: x mandatory;
     }
     @media(min-width:80em){
-        
         display: flex;
     }
 
@@ -1487,6 +1486,11 @@ body {
         scroll-snap-align: center;
         white-space: normal;
         flex-basis: 88%;
+        cursor: grab;
+
+        &:focus {
+            cursor: grabbing;
+        }
         
         @media(min-width:31.25em){
             flex-basis: 80%;
